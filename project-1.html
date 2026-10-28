@@ -314,7 +314,7 @@ configHeader.querySelector('p[data-node-id$="63292"]').textContent='优化使用
 const configBody=configRoot.children[1];
 const skillRoot=skillSection.querySelector('.design-section > div');
 const skillSlide=document.createElement('div');skillSlide.className='ppt-skill-slide';
-const skillLabel=document.createElement('h3');skillLabel.textContent='可以更便捷地调用技能';skillSlide.append(skillLabel,skillRoot.children[1]);
+skillSlide.append(skillRoot.children[1]);
 makePptChapter(configSection,configHeader,[configBody,skillSlide]);skillSection.remove();
 const profileSection=document.querySelector('[data-section="1058:24395"]');
 profileSection.id='presentation-03';
