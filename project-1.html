@@ -69,7 +69,7 @@ p[data-node-id*="63293"],p[data-node-id="1056:22154"]{-webkit-text-stroke:1px #8
 .creation-tabs{display:flex;flex-direction:column}
 .creation-tab{position:relative;appearance:none;border:0;border-bottom:1px solid #e8e6dc;background:transparent;color:#898781;padding:48px 0;text-align:left;font:400 24px/36px var(--sans);cursor:pointer;transition:color .15s ease}
 .creation-tab[aria-selected="true"],.creation-tab:hover{color:#0b0b0b}
-.creation-tab[aria-selected="true"]::after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:1px;background:#52514e;transform-origin:left;transform:scaleX(var(--creation-progress,0))}
+.creation-tab[aria-selected="true"]::after{content:"";position:absolute;bottom:-1px;left:0;width:40.87%;height:1px;background:#52514e}
 .creation-tab:focus-visible{outline:2px solid #d97757;outline-offset:6px;border-radius:4px}
 .creation-panels{min-width:0}
 .creation-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden;border:1px solid #e8e6dc;border-radius:16px;background:#fcfcfa}
@@ -125,21 +125,8 @@ gallery.addEventListener('scroll',syncGalleryBar,{passive:true});galleryBar.addE
 
 const creationTabs=[...document.querySelectorAll('.creation-tab')];
 const creationPanels=[...document.querySelectorAll('.creation-pair')];
-let creationIndex=0,creationElapsed=0,creationLastTime=null,creationVisible=false;
-function selectCreation(index,focus=false){creationIndex=index;creationElapsed=0;creationLastTime=null;document.getElementById('creation-demo').style.setProperty('--creation-progress','0');creationTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;creationPanels[i].hidden=i!==index;});if(focus)creationTabs[index].focus();}
+function selectCreation(index,focus=false){creationTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;creationPanels[i].hidden=i!==index;});if(focus)creationTabs[index].focus();}
 creationTabs.forEach((tab,index)=>{tab.addEventListener('click',()=>selectCreation(index));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowDown'||event.key==='ArrowRight')next=(index+1)%creationTabs.length;else if(event.key==='ArrowUp'||event.key==='ArrowLeft')next=(index+creationTabs.length-1)%creationTabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=creationTabs.length-1;else return;event.preventDefault();selectCreation(next,true);});});
 
-const creationDemo=document.getElementById('creation-demo');
-new IntersectionObserver(entries=>{creationVisible=entries[0].isIntersecting;creationLastTime=null;},{threshold:0.25}).observe(creationDemo);
-document.addEventListener('visibilitychange',()=>{creationLastTime=null;});
-function animateCreation(time){
- if(creationVisible&&!document.hidden){
-  if(creationLastTime!==null)creationElapsed+=time-creationLastTime;
-  creationLastTime=time;
-  if(creationElapsed>=5000){selectCreation((creationIndex+1)%creationTabs.length);creationLastTime=time;}
-  creationDemo.style.setProperty('--creation-progress',String(creationElapsed/5000));
- }else creationLastTime=null;
- requestAnimationFrame(animateCreation);
-}
-requestAnimationFrame(animateCreation);
+
 </script></body></html>
