@@ -8,8 +8,16 @@
 @media(min-width:901px) and (max-width:1500px){.detail-nav{height:88px;padding:35px 63px 0;font-size:13px;line-height:19px}.back-link img{width:16px;height:16px}.detail-main{width:min(960px,calc(100% - 64px));margin-top:37px}.detail-heading{width:467px}.eyebrow{font-size:12px;letter-spacing:.72px;margin-bottom:13px}.detail-heading h1{font-size:37px}.project-facts{margin-top:112px}.facts-row{gap:43px;padding:16px 0}.fact-label,.fact-value{font-size:13px;line-height:19px}.fact-label{margin-bottom:5px}.page-space{min-height:347px}}
 @media(max-width:900px){.detail-nav{height:auto;padding:28px 24px 0;font-size:15px;line-height:22px}.designer{display:none}.detail-main{width:calc(100% - 48px);margin-top:64px}.detail-heading{width:100%}.eyebrow{font-size:13px;letter-spacing:.78px;margin-bottom:16px}.detail-heading h1{font-size:clamp(36px,9vw,52px);line-height:1.24}.project-facts{margin-top:96px}.facts-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;padding:24px 0}.fact:last-child{grid-column:1/-1}.fact-label,.fact-value{font-size:15px;line-height:23px;white-space:normal}.page-space{min-height:300px}}
 @media(max-width:520px){.detail-main{width:calc(100% - 32px);margin-top:54px}.detail-nav{padding-left:16px;padding-right:16px}.detail-heading h1{font-size:36px}.project-facts{margin-top:72px}.facts-row{grid-template-columns:1fr}.fact:last-child{grid-column:auto}}
+
+.detail-nav{position:sticky;top:0;z-index:100;width:100%;max-width:none;height:88px;margin:0;padding:32px;display:flex;align-items:center;justify-content:space-between;background:#faf9f5;font:400 16px/24px var(--sans)}
+.detail-nav .back-link{gap:6px;min-width:0}
+.detail-nav .back-link img{width:20px;height:20px;flex:none}
+.detail-nav .designer{display:flex;align-items:center;gap:11px;color:#0b0b0b;white-space:nowrap;font:400 15px/24px var(--sans)}
+.detail-nav .designer-divider{width:1px;height:22.5px;max-width:none}
+.detail-nav .designer-role{color:#898781}
+@media(max-width:600px){.detail-nav{padding:24px;height:72px}.detail-nav .designer-role,.detail-nav .designer-divider{display:none}}
 </style></head><body>
-<header class="detail-nav"><a class="back-link" href="index.html#projects"><img src="assets/detail/chevron-left.svg" alt="">项目案例 03</a><span class="designer">邵梦贞·产品设计师</span></header>
+<header class="detail-nav"><a class="back-link" href="index.html#projects"><img src="assets/detail/sticky-chevron-left.svg" alt="">项目案例 03</a><span class="designer"><span>邵梦贞</span><img class="designer-divider" src="assets/detail/designer-divider.svg" alt=""><span class="designer-role">产品设计师·7年设计经验</span></span></header>
 <main class="detail-main"><section class="detail-heading"><p class="eyebrow">Custom Agent Platform</p><h1>项目占位<span>设计方案</span></h1></section>
 <section class="project-facts" aria-label="项目信息"><img class="divider" src="assets/detail/divider.svg" alt=""><div class="facts-row"><div class="fact"><p class="fact-label">设计周期</p><p class="fact-value">待补充</p></div><div class="fact"><p class="fact-label">参与角色</p><p class="fact-value">设计 Owner</p></div><div class="fact"><p class="fact-label">项目性质</p><p class="fact-value">项目案例</p></div><div class="fact"><p class="fact-label">设计亮点</p><p class="fact-value">项目内容待补充</p></div></div><img class="divider" src="assets/detail/divider.svg" alt=""></section><div class="page-space"></div></main>
 </body></html>
