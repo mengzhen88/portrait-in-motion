@@ -155,7 +155,7 @@ body:has(.video-modal[open]){overflow:hidden}
 .creation-pair{position:relative;transform-origin:center top;backface-visibility:hidden}
 @media(prefers-reduced-motion:reduce){.creation-pair{animation:none!important}}
 .presentation-group{position:relative}
-.presentation-heading{position:sticky;top:88px;z-index:40;width:100%;padding:0 0 16px;margin-bottom:32px;background:#faf9f5}
+.presentation-heading{position:sticky;top:88px;z-index:40;width:100%;padding:0;margin-bottom:24px;background:#faf9f5}
 .creation-turning-page{position:absolute!important;top:44px;left:0;width:100%;z-index:5;pointer-events:none;transform-origin:center center;will-change:transform,opacity;box-shadow:0 12px 28px #0000000d}
 .ppt-scroll-section{overflow:visible!important}
 .ppt-track{position:relative;width:100%}
@@ -280,7 +280,7 @@ function layoutCreationScroll(){
  creationDemo.style.zoom=scale;creationHeader.style.zoom=scale;
  creationStep=Math.max(400,innerHeight*.8);
  const height=creationSticky.getBoundingClientRect().height;
- creationSticky.style.setProperty('--creation-top',Math.max(stickyTop,(innerHeight-height)/2)+'px');
+ creationSticky.style.setProperty('--creation-top',stickyTop+'px');
  creationTrack.style.height=creationPinned?(height+creationStep*3)+'px':'auto';
  creationSticky.style.position=creationPinned?'sticky':'relative';syncCreationScroll();
 }
