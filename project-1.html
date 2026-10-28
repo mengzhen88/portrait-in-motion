@@ -112,11 +112,9 @@ body:has(.video-modal[open]){overflow:hidden}
 .demo-video:hover .video-toolbar,.demo-video:has(:focus-visible) .video-toolbar{opacity:1;pointer-events:auto}
 .video-toolbar button{display:grid;place-items:center;flex:none;width:28px;height:28px;padding:0;color:inherit;border:0;background:transparent;font:18px var(--sans);cursor:pointer;text-shadow:inherit}
 .video-toolbar button:hover{color:#f1b49e}
-.video-toolbar button:focus-visible,.video-toolbar input:focus-visible,.video-toolbar select:focus-visible{outline:2px solid #d97757;outline-offset:2px}
+.video-toolbar button:focus-visible,.video-toolbar input:focus-visible{outline:2px solid #d97757;outline-offset:2px}
 .video-toolbar input{min-width:0;flex:1;accent-color:#fff;height:16px;cursor:pointer}
 .video-toolbar time{white-space:nowrap;font-variant-numeric:tabular-nums}
-.video-toolbar select{width:43px;border:0;color:#fff;background:transparent;font:14px var(--sans);cursor:pointer;text-shadow:inherit}
-.video-toolbar select option{color:#1f2329;background:#faf9f5}
 .demo-video video{cursor:pointer}
 @media(hover:none){.demo-video .video-toolbar,.demo-video .video-play{opacity:1;pointer-events:auto}}
 
@@ -192,9 +190,9 @@ function playDemo(video){document.querySelectorAll('.demo-video video').forEach(
 document.querySelectorAll('.demo-video').forEach(demo=>{
  const video=demo.querySelector('video'),play=demo.querySelector('.video-play');video.controls=false;
  const toolbar=document.createElement('div');toolbar.className='video-toolbar';toolbar.setAttribute('role','group');toolbar.setAttribute('aria-label',demo.dataset.title+'播放控制');
- toolbar.innerHTML='<button type="button" class="video-toggle" aria-label="播放">▶</button><time>0:00 / 0:00</time><input type="range" min="0" max="1000" value="0" aria-label="视频播放进度"><button type="button" class="video-enlarge" aria-label="放大查看视频">⛶</button><select aria-label="播放速度"><option value="0.5">0.5x</option><option value="1" selected>1x</option><option value="1.5">1.5x</option><option value="2">2x</option></select><button type="button" class="video-mute" aria-label="静音">♪</button>';
+ toolbar.innerHTML='<button type="button" class="video-toggle" aria-label="播放">▶</button><time>0:00 / 0:00</time><input type="range" min="0" max="1000" value="0" aria-label="视频播放进度"><button type="button" class="video-enlarge" aria-label="放大查看视频">⛶</button>';
  demo.append(toolbar);
- const toggle=toolbar.querySelector('.video-toggle'),time=toolbar.querySelector('time'),seek=toolbar.querySelector('input'),mute=toolbar.querySelector('.video-mute');
+ const toggle=toolbar.querySelector('.video-toggle'),time=toolbar.querySelector('time'),seek=toolbar.querySelector('input');
  const format=value=>{value=Number.isFinite(value)?Math.floor(value):0;return Math.floor(value/60)+':'+String(value%60).padStart(2,'0');};
  function sync(){play.hidden=!video.paused&&!video.ended;toggle.textContent=video.paused?'▶':'Ⅱ';toggle.setAttribute('aria-label',video.paused?'播放':'暂停');time.textContent=format(video.currentTime)+' / '+format(video.duration);seek.value=video.duration?Math.round(video.currentTime/video.duration*1000):0;seek.setAttribute('aria-valuetext',format(video.currentTime)+'，共'+format(video.duration));}
  function togglePlay(){if(video.paused)playDemo(video);else video.pause();}
@@ -202,8 +200,6 @@ document.querySelectorAll('.demo-video').forEach(demo=>{
  ['loadedmetadata','durationchange','timeupdate','play','pause','ended'].forEach(event=>video.addEventListener(event,sync));
  video.addEventListener('play',()=>document.querySelectorAll('.demo-video video').forEach(other=>{if(other!==video)other.pause();}));
  seek.addEventListener('input',()=>{if(Number.isFinite(video.duration))video.currentTime=Number(seek.value)/1000*video.duration;});
- toolbar.querySelector('select').addEventListener('change',event=>video.playbackRate=Number(event.target.value));
- mute.addEventListener('click',()=>{video.muted=!video.muted;mute.textContent=video.muted?'♪̸':'♪';mute.setAttribute('aria-label',video.muted?'取消静音':'静音');mute.setAttribute('aria-pressed',String(video.muted));});
  toolbar.querySelector('.video-enlarge').addEventListener('click',()=>{
   activeDemo=video;video.pause();largeVideo.src=video.currentSrc||video.querySelector('source').src;largeVideo.poster=video.poster;largeVideo.playbackRate=video.playbackRate;largeVideo.muted=video.muted;modalTitle.textContent=demo.dataset.title;
   largeVideo.onloadedmetadata=()=>{largeVideo.currentTime=Math.min(video.currentTime,largeVideo.duration||0);playDemo(largeVideo);};videoModal.showModal();
