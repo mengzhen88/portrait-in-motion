@@ -145,8 +145,8 @@ body:has(.video-modal[open]){overflow:hidden}
 .feedback-quotes::after{right:0;background:linear-gradient(to left,#faf9f5,rgba(250,249,245,0))}
 .creation-scroll-section{overflow:visible!important}
 .creation-scroll-track{position:relative;width:100%}
-.creation-sticky{position:sticky;top:var(--creation-top,24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--creation-header-gap,24px)}
-.creation-demo{padding:32px 0 48px;align-items:center}
+.creation-sticky{position:sticky;top:var(--creation-top,24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+.creation-demo{padding:80px 0 210px;align-items:center}
 .creation-tabs{align-self:center}
 .creation-panels{position:relative;padding-top:44px;perspective:1200px;isolation:isolate}
 .creation-panels::before,.creation-panels::after{content:"";position:absolute;border:1px solid #e8e6dc;border-radius:16px;background:#fcfcfa;z-index:-1;pointer-events:none}
@@ -222,9 +222,9 @@ creationTabs.forEach((tab,index)=>{tab.addEventListener('click',()=>navigateCrea
 function syncCreationScroll(){creationFrame=0;if(!creationPinned)return;const top=parseFloat(getComputedStyle(creationSticky).top);const passed=top-creationTrack.getBoundingClientRect().top;selectCreation(Math.max(0,Math.min(2,Math.floor(passed/creationStep+.15))));}
 function layoutCreationScroll(){
  creationPinned=innerWidth>=600&&innerHeight>=500;
- const designHeight=creationHeader.offsetHeight+creationDemo.offsetHeight+24;
+ const designHeight=creationHeader.offsetHeight+creationDemo.offsetHeight;
  const scale=Math.min(creationSection.clientWidth/1446,creationPinned?(innerHeight-48)/designHeight:1);
- creationDemo.style.zoom=scale;creationHeader.style.zoom=scale;creationSticky.style.setProperty('--creation-header-gap',24*scale+'px');
+ creationDemo.style.zoom=scale;creationHeader.style.zoom=scale;
  creationStep=Math.max(400,innerHeight*.8);
  const height=creationSticky.getBoundingClientRect().height;
  creationSticky.style.setProperty('--creation-top',Math.max(24,(innerHeight-height)/2)+'px');
