@@ -84,9 +84,9 @@ p[data-node-id*="63293"],p[data-node-id="1056:22154"]{-webkit-text-stroke:1px #8
 .compare-handle{transition:transform .18s ease,box-shadow .18s ease}
 .compare-handle img{grid-area:1/1;transition:opacity .18s ease}
 .compare-arrow-hover{opacity:0}
-[data-node-id="925:28474"]:has(.compare-control:hover) .compare-handle,[data-node-id="925:28474"]:focus-within .compare-handle{transform:translate(-50%,-50%) scale(1.05);box-shadow:0 4px 16px #0002}
-[data-node-id="925:28474"]:has(.compare-control:hover) .compare-handle img:not(.compare-arrow-hover),[data-node-id="925:28474"]:focus-within .compare-handle img:not(.compare-arrow-hover){opacity:0}
-[data-node-id="925:28474"]:has(.compare-control:hover) .compare-arrow-hover,[data-node-id="925:28474"]:focus-within .compare-arrow-hover{opacity:1}
+[data-node-id="925:28474"].handle-hover .compare-handle,[data-node-id="925:28474"]:has(.compare-control:focus-visible) .compare-handle{transform:translate(-50%,-50%) scale(1.05);box-shadow:0 4px 16px #0002}
+[data-node-id="925:28474"].handle-hover .compare-handle img:not(.compare-arrow-hover),[data-node-id="925:28474"]:has(.compare-control:focus-visible) .compare-handle img:not(.compare-arrow-hover){opacity:0}
+[data-node-id="925:28474"].handle-hover .compare-arrow-hover,[data-node-id="925:28474"]:has(.compare-control:focus-visible) .compare-arrow-hover{opacity:1}
 @media(prefers-reduced-motion:reduce){.compare-handle,.compare-handle img{transition:none}}
 
 .demo-video{width:100%;aspect-ratio:1.83;position:relative;overflow:hidden;border:.5px solid #e8e6dc;border-radius:12px;background:#f3f1ed;flex-shrink:0}
@@ -148,6 +148,8 @@ for(let i=1;i>=0;i--){const img=document.createElement('img');img.src=sources[i]
 const line=document.createElement('div');line.className='compare-line';comparison.append(line);
 const handle=document.createElement('div');handle.className='compare-handle';const arrow=document.createElement('img');arrow.src=sources[2];arrow.alt='';handle.append(arrow);const hoverArrow=arrow.cloneNode();hoverArrow.src='assets/anyclaw/compare-arrow-hover.svg';hoverArrow.className='compare-arrow-hover';handle.append(hoverArrow);comparison.append(handle);
 const range=document.createElement('input');range.type='range';range.min=0;range.max=100;range.value=39;range.className='compare-control';range.setAttribute('aria-label','拖动对比改版前与改版后的页面');range.addEventListener('input',()=>comparison.style.setProperty('--split',range.value+'%'));comparison.append(range);
+function updateHandleHover(event){const rect=handle.getBoundingClientRect();const radius=Math.min(rect.width,rect.height)/2;comparison.classList.toggle('handle-hover',Math.hypot(event.clientX-(rect.left+rect.width/2),event.clientY-(rect.top+rect.height/2))<=radius);}
+range.addEventListener('pointermove',updateHandleHover);range.addEventListener('pointerleave',()=>comparison.classList.remove('handle-hover'));range.addEventListener('input',()=>comparison.classList.remove('handle-hover'));
 
 const gallery=document.getElementById('feedback-gallery');
 gallery.addEventListener('keydown',event=>{
