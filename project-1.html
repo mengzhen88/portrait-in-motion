@@ -146,7 +146,7 @@ body:has(.video-modal[open]){overflow:hidden}
 .creation-scroll-section{overflow-x:clip!important;overflow-y:visible!important}
 .creation-scroll-track{position:relative;width:100%}
 .creation-sticky{position:sticky;top:var(--creation-top,24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
-.creation-demo{padding:80px 0 210px;align-items:center}
+.creation-demo{padding:24px 0 210px;align-items:center}
 .creation-tabs{align-self:center}
 .creation-panels{position:relative;padding-top:44px;perspective:1200px;isolation:isolate}
 .creation-panels::before,.creation-panels::after{content:"";position:absolute;border:1px solid #e8e6dc;border-radius:16px;background:#fcfcfa;z-index:-1;pointer-events:none}
@@ -160,7 +160,7 @@ body:has(.video-modal[open]){overflow:hidden}
 .ppt-scroll-section{overflow:visible!important}
 .ppt-track{position:relative;width:100%}
 .ppt-sticky{position:sticky;display:flex;justify-content:center}
-.ppt-stage{width:1446px;flex:none;display:flex;flex-direction:column;gap:48px;padding-bottom:32px}
+.ppt-stage{width:1446px;flex:none;display:flex;flex-direction:column;gap:24px;padding-bottom:32px}
 .ppt-deck{position:relative;perspective:1400px;width:100%;overflow:clip}
 .ppt-slide{width:100%!important;transform-origin:center top}
 .ppt-slide[hidden]{display:none!important}
@@ -345,7 +345,7 @@ function layoutPptChapters(){pptChapters.forEach(chapter=>{
  const top=document.querySelector('.detail-nav').getBoundingClientRect().height+0+presentationHeading.getBoundingClientRect().height+24;
  const heights=chapter.slides.map(slide=>{slide.hidden=false;return slide.offsetHeight;});chapter.slides.forEach((slide,i)=>slide.hidden=i!==chapter.index);
  const scale=chapter.section.clientWidth/1446;chapter.scale=scale;
- const available=Math.max(260,(innerHeight-top-24)/scale-105-48-32);
+ const available=Math.max(260,(innerHeight-top-24)/scale-105-24-32);
  const deckHeight=Math.min(Math.max(...heights),available);
  chapter.deck.style.height=deckHeight+'px';chapter.stage.style.zoom=scale;
  chapter.sticky.style.top=top+'px';chapter.section.style.scrollMarginTop=top+'px';chapter.sticky.style.position=chapter.pinned?'sticky':'relative';
