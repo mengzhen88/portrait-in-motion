@@ -451,10 +451,22 @@ const profileSection=document.querySelector('[data-section="1058:24395"]');
 profileSection.id='presentation-03';
 const profileRoot=profileSection.querySelector('.design-section > div');
 const profileHeader=profileRoot.children[0],profileDiagram=profileRoot.children[1];
-const overview=profileDiagram.cloneNode(true);overview.removeAttribute('id');overview.classList.add('ppt-profile-overview');
-overview.querySelector('[data-node-id="1064:63287"]')?.remove();
-makePptChapter(profileSection,profileHeader,[overview,profileDiagram]);
-// The following frame in the source contains no illustration; its repeated title is redundant.
+profileDiagram.style.height='784px';
+profileDiagram.querySelector('.profile-panel').style.top='83px';
+const profileCaption=profileDiagram.querySelector('[data-node-id="1063:61967"]');profileCaption.style.cssText='position:absolute;left:50%;transform:translateX(-50%);top:31px;font:400 18px/28px var(--sans);color:#52514e;text-align:center;white-space:nowrap';
+profileDiagram.querySelectorAll('[data-node-id="1064:63287"] [style]').forEach(element=>{if(element.style.position==='absolute'&&element.style.top.endsWith('px'))element.style.top=(parseFloat(element.style.top)-15.05)+'px';});
+const profileHeading=profileHeader.querySelector('p[data-node-id$="63292"]');profileHeading.style.color='#52514e';profileHeading.style.flex='0 0 auto';
+const profileSubtitle=document.createElement('p');profileSubtitle.className='profile-page-subtitle';profileSubtitle.textContent='档案式设计，重要配置一目了然';profileSubtitle.style.cssText='font:500 32px/normal var(--sans);color:#d97757;flex:1;min-width:0';profileHeading.after(profileSubtitle);profileHeading.parentElement.style.gap='12px';
+function profileVideoSlide(id,title,stem,width,height,top,duration){
+ const slide=document.createElement('div');slide.className='profile-media-slide';slide.style.cssText='height:784px;overflow:hidden;position:relative;border:1px solid #e8e6dc;border-radius:16px;background:#f3f1ed';
+ const caption=document.createElement('p');caption.className='profile-slide-caption';caption.textContent=title;caption.style.cssText='position:absolute;left:50%;transform:translateX(-50%);top:31px;font:400 18px/28px var(--sans);color:#52514e;white-space:nowrap';
+ const media=document.createElement('div');media.id=id;media.className='demo-video';media.dataset.title=title;media.style.cssText='position:absolute;left:50%;transform:translateX(-50%);top:'+top+'px;width:'+width+'px;height:'+height+'px;border-radius:12px;box-shadow:0 18px 35px #00000016';
+ const video=document.createElement('video');video.playsInline=true;video.preload='none';video.dataset.poster='assets/anyclaw/videos/'+stem+'-poster.webp';video.dataset.originalSrc='assets/anyclaw/videos/'+stem+'.mp4';video.dataset.duration=duration;video.style.cssText='width:100%;height:100%;object-fit:contain';video.setAttribute('aria-label',title);
+ const play=document.createElement('button');play.type='button';play.className='video-play';play.setAttribute('aria-label','播放：'+title);media.append(video,play);slide.append(caption,media);return slide;
+}
+const capabilitySlide=profileVideoSlide('capability-list-video','聚合展示能力，且增加二级列表页方便管理','capability-list',1200,807.98,83,7.15);
+const navigationSlide=profileVideoSlide('custom-navigation-video','顶部导航，支持用户按照习惯将常用的功能pin住','custom-navigation',1200.184,652.6,83,9.16);
+const profileChapter=makePptChapter(profileSection,profileHeader,[profileDiagram,capabilitySlide,navigationSlide]);profileChapter.pageSubtitle=profileSubtitle;profileChapter.pageTitles=['档案式设计，重要配置一目了然','知识/技能/身份/MCP聚合展示且支持下钻','导航支持灵活自定义'];
 document.querySelector('[data-section="1058:23872"]').hidden=true;
 function selectPpt(chapter,index){
  if(index===chapter.index)return;
@@ -536,6 +548,7 @@ presentation02.querySelectorAll('p,span,.chat-user,.chat-answer').forEach(elemen
  else return;
  element.style.fontSize=size+'px';element.style.lineHeight=line;element.style.fontWeight=weight;
 });
+profileHeading.style.fontSize='32px';
 var readableTypeRecords;
 function syncReadableType(){
  if(!readableTypeRecords)return;
@@ -554,7 +567,7 @@ document.querySelectorAll('.feedback-quote p').forEach(p=>{p.style.fontSize=p.da
 readableTypeRecords=[...document.querySelectorAll('.case-main p,.case-main h1,.case-main h2,.case-main h3,.case-main button,.case-main time,.case-main span,.case-main div')].filter(element=>{
  if(element.matches('[data-node-id*="63293"],[data-node-id="1056:22154"],.video-play,.chat-avatar')||element.closest('.creation-window-return'))return false;
  return [...element.childNodes].some(node=>node.nodeType===3&&node.textContent.trim());
-}).map(element=>{const style=getComputedStyle(element);let hasZoom=false;for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement)if(parent.style.zoom)hasZoom=true;return {element,size:parseFloat(element.style.fontSize)||parseFloat(style.fontSize),lineHeight:parseFloat(element.style.lineHeight)||parseFloat(style.lineHeight)||0,letterSpacing:parseFloat(style.letterSpacing)||0,referenceScale:element.closest('[data-section="1058:22205"],[data-section="1058:22203"],#presentation-02')?1:(hasZoom?1280/1446:1)};});
+}).map(element=>{const style=getComputedStyle(element);let hasZoom=false;for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement)if(parent.style.zoom)hasZoom=true;return {element,size:parseFloat(element.style.fontSize)||parseFloat(style.fontSize),lineHeight:parseFloat(element.style.lineHeight)||parseFloat(style.lineHeight)||0,letterSpacing:parseFloat(style.letterSpacing)||0,referenceScale:element.closest('[data-section="1058:22205"],[data-section="1058:22203"],#presentation-02,#presentation-03')?1:(hasZoom?1280/1446:1)};});
 syncReadableType();
 new ResizeObserver(()=>{syncReadableType();}).observe(document.querySelector('.case-main'));
 requestAnimationFrame(()=>{layoutCreationScroll();layoutPptChapters();});
