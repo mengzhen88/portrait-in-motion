@@ -24,7 +24,7 @@ p[data-node-id*="63293"],p[data-node-id="1056:22154"]{font-family:"Presentation 
 [data-node-id="988:128626"],[data-node-id="988:128633"]{flex:auto!important}
 [data-node-id="926:30918"]{line-height:36px}
 [data-node-id="977:42633"]>div{width:100%!important;flex-wrap:wrap;gap:20px!important}
-[data-node-id="977:42633"] p{white-space:normal!important;line-height:32px!important}
+[data-node-id="977:42633"] p{white-space:normal!important}
 [data-node-id="977:42633"]>div>div{max-width:100%}
 }
 
@@ -277,6 +277,12 @@ correctedSections.forEach(section=>{
   else {p.style.fontSize='20px';p.style.fontWeight='400';}
   if(['981:44282','1026:61747'].includes(id))p.style.lineHeight='32px';
  });
+});
+const strategyType=document.querySelector('[data-section="1058:22203"]');
+strategyType.querySelectorAll('p').forEach(p=>{
+ const id=p.dataset.nodeId;
+ p.style.lineHeight=id==='1026:61747'?'32px':id==='1053:22104'?'36px':'normal';
+ p.style.fontFamily=id==='950:30996'?'"Portfolio Roboto Mono",Menlo,monospace':'"PingFang SC",Arial,sans-serif';
 });
 const backgroundIntro=document.querySelector('[data-node-id="926:30918"]');backgroundIntro.style.fontSize='20px';backgroundIntro.style.lineHeight='32px';
 const personaCards=document.querySelector('[data-node-id="988:128582"]');
