@@ -146,7 +146,7 @@ body:has(.video-modal[open]){overflow:hidden}
 .creation-scroll-section{overflow-x:clip!important;overflow-y:visible!important}
 .creation-scroll-track{position:relative;width:100%}
 .creation-sticky{position:sticky;top:var(--creation-top,24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
-.creation-demo{padding:24px 0 210px;align-items:center}
+.creation-demo{padding:24px 0 0;align-items:center}
 .creation-tabs{align-self:center}
 .creation-panels{position:relative;padding-top:44px;perspective:1200px;isolation:isolate}
 .creation-panels::before,.creation-panels::after{content:"";position:absolute;border:1px solid #e8e6dc;border-radius:16px;background:#fcfcfa;z-index:-1;pointer-events:none}
@@ -749,8 +749,8 @@ function layoutCreationScroll(){
  const creationTitle=creationHeader.querySelector('[data-node-id="975:42590"]');
  creationTitle.parentElement.style.height=Math.max(105,creationTitle.scrollHeight+16)+'px';
  creationStep=Math.max(400,innerHeight*.8);
- creationSticky.classList.toggle('creation-scrollable',creationPinned);
- creationSticky.style.maxHeight=creationPinned?(innerHeight-stickyTop-24)+'px':'none';
+ creationSticky.classList.remove('creation-scrollable');
+ creationSticky.style.maxHeight='none';
  const height=creationSticky.getBoundingClientRect().height;
  creationSticky.style.setProperty('--creation-top',stickyTop+'px');
  creationTrack.style.height=creationPinned?(height+creationStep*3)+'px':'auto';
