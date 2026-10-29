@@ -415,12 +415,13 @@ const skillSection=document.querySelector('[data-section="1058:23353"]');
 configSection.id='presentation-02';
 const configRoot=configSection.querySelector('.design-section > div');
 const configHeader=configRoot.children[0];
-configHeader.querySelector('p[data-node-id$="63292"]').textContent='优化使用链路与体验';
+const configTitle=configHeader.querySelector('p[data-node-id$="63292"]');configTitle.textContent='优化使用链路与体验';configTitle.style.color='#52514e';configTitle.style.flex='0 0 auto';
+const configSubtitle=document.createElement('p');configSubtitle.className='config-page-subtitle';configSubtitle.textContent='配置与调试分离';configSubtitle.style.cssText='font-family:var(--sans);font-weight:500;font-size:32px;line-height:normal;color:#d97757;flex:1;min-width:0';configTitle.after(configSubtitle);configTitle.parentElement.style.gap='12px';
 const configBody=configRoot.children[1];
 const skillRoot=skillSection.querySelector('.design-section > div');
 const skillSlide=document.createElement('div');skillSlide.className='ppt-skill-slide';
 skillSlide.append(skillRoot.children[1]);
-makePptChapter(configSection,configHeader,[configBody,skillSlide]);skillSection.remove();
+const configChapter=makePptChapter(configSection,configHeader,[configBody,skillSlide]);configChapter.pageSubtitle=configSubtitle;configChapter.pageTitles=['配置与调试分离','支持更便捷的调用能力'];skillSection.remove();
 const profileSection=document.querySelector('[data-section="1058:24395"]');
 profileSection.id='presentation-03';
 const profileRoot=profileSection.querySelector('.design-section > div');
@@ -434,6 +435,7 @@ function selectPpt(chapter,index){
  if(index===chapter.index)return;
  chapter.slides[chapter.index].querySelectorAll('video').forEach(v=>v.pause());chapter.index=index;
  chapter.slides.forEach((slide,i)=>slide.hidden=i!==index);
+ if(chapter.pageSubtitle)chapter.pageSubtitle.textContent=chapter.pageTitles[index];
  if(!reducedCreationMotion.matches){chapter.slides[index].getAnimations().forEach(a=>a.cancel());chapter.slides[index].animate([{opacity:0,transform:'translateY(55px) rotateX(-7deg)'},{opacity:1,transform:'translateY(0) rotateX(0)'}],{duration:550,easing:'cubic-bezier(.22,1,.36,1)'});}
  chapter.headerIndicators?.forEach((line,i)=>line.style.background=i===index?'#0b0b0b':'rgba(0,0,0,.1)');
 }
