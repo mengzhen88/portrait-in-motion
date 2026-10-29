@@ -761,9 +761,15 @@ function syncPptScroll(){pptChapters.forEach(chapter=>{
 function layoutPptChapters(){pptChapters.forEach(chapter=>{
  chapter.pinned=innerWidth>=600&&innerHeight>=500;chapter.section.classList.toggle('ppt-static',!chapter.pinned);
  const top=document.querySelector('.detail-nav').getBoundingClientRect().height+0+presentationHeading.getBoundingClientRect().height+24;
- const heights=chapter.slides.map(slide=>{slide.hidden=false;return slide.offsetHeight;});chapter.slides.forEach((slide,i)=>slide.hidden=i!==chapter.index);
  const scale=chapter.section.clientWidth/1446;chapter.scale=scale;
- const available=Math.max(260,(innerHeight-top-24)/scale-105-24-32);
+ chapter.stage.style.zoom=scale;syncReadableType();
+ const header=chapter.stage.firstElementChild;
+ const headingRow=header.querySelector('[data-node-id$="63302"]');
+ header.style.height='105px';
+ if(headingRow){const used=(headingRow.getBoundingClientRect().bottom-header.getBoundingClientRect().top)/scale;header.style.height=Math.ceil(Math.max(74.667,used))+'px';}
+ chapter.stage.style.gap=24/scale+'px';
+ const heights=chapter.slides.map(slide=>{slide.hidden=false;return slide.offsetHeight;});chapter.slides.forEach((slide,i)=>slide.hidden=i!==chapter.index);
+ const available=Math.max(260,(innerHeight-top-24)/scale-header.offsetHeight-24/scale-32);
  const deckHeight=Math.min(Math.max(...heights),available);
  chapter.deck.style.height=deckHeight+'px';chapter.stage.style.zoom=scale;syncReadableType();
  chapter.sticky.style.top=top+'px';chapter.section.style.scrollMarginTop=top+'px';chapter.sticky.style.position=chapter.pinned?'sticky':'relative';
