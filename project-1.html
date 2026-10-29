@@ -809,6 +809,8 @@ videoModal.addEventListener('click',event=>{if(event.target===videoModal){const 
 videoModal.addEventListener('close',()=>{largeVideo.pause();if(activeDemo&&Number.isFinite(largeVideo.currentTime))activeDemo.currentTime=largeVideo.currentTime;largeVideo.removeAttribute('src');largeVideo.load();activeDemo=null;});
 
 
+document.querySelectorAll('#configuration-confusion .chat-user,#configuration-confusion .chat-answer').forEach(e=>{e.style.fontSize='22.52px';e.style.lineHeight='35.388px';});
+document.querySelectorAll('#configuration-confusion header').forEach(e=>{e.style.fontSize='18px';e.style.lineHeight='normal';});
 const presentation02=document.querySelector('#presentation-02');
 presentation02.querySelectorAll('p,span,.chat-user,.chat-answer').forEach(element=>{
  const id=element.dataset.nodeId;
@@ -817,7 +819,7 @@ presentation02.querySelectorAll('p,span,.chat-user,.chat-answer').forEach(elemen
  if(id?.endsWith('63292')||element.classList.contains('config-page-subtitle')){size=32;weight='500';}
  else if(['1058:23288','1058:23314'].includes(id)){size=24;line='36px';weight='500';}
  else if(['1058:23289','1058:23315'].includes(id)){size=20;line='32px';}
- else if(element.closest('.chat-example header')||['1058:23318','1058:23321','1058:23324'].includes(id)){size=18;}
+ else if(['1058:23318','1058:23321','1058:23324'].includes(id)){size=18;}
  else if(element.matches('.chat-user,.chat-answer')){size=22.52;line='35.388px';}
  else return;
  element.style.fontSize=size+'px';element.style.lineHeight=line;element.style.fontWeight=weight;
@@ -839,7 +841,7 @@ function syncReadableType(){
 }
 document.querySelectorAll('.feedback-quote p').forEach(p=>{p.style.fontSize=p.dataset.nodeId==='985:128549'?'24px':'20px';p.style.lineHeight='44px';});
 readableTypeRecords=[...document.querySelectorAll('.case-main p,.case-main h1,.case-main h2,.case-main h3,.case-main button,.case-main time,.case-main span,.case-main div')].filter(element=>{
- if(element.closest('.usability-testing'))return false;
+ if(element.closest('.usability-testing,#configuration-confusion'))return false;
  if(element.matches('[data-node-id*="63293"],[data-node-id="1056:22154"],.video-play,.chat-avatar')||element.closest('.creation-window-return'))return false;
  return [...element.childNodes].some(node=>node.nodeType===3&&node.textContent.trim());
 }).map(element=>{const style=getComputedStyle(element);let hasZoom=false;for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement)if(parent.style.zoom)hasZoom=true;return {element,size:parseFloat(element.style.fontSize)||parseFloat(style.fontSize),lineHeight:parseFloat(element.style.lineHeight)||parseFloat(style.lineHeight)||0,letterSpacing:parseFloat(style.letterSpacing)||0,referenceScale:element.closest('[data-section="1058:22205"],[data-section="1058:22203"],#presentation-02,#presentation-03')?1:(hasZoom?1280/1446:1)};});
