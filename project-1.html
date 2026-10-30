@@ -155,7 +155,7 @@ body:has(.video-modal[open]){overflow:hidden}
 .creation-pair{position:relative;transform-origin:center top;backface-visibility:hidden}
 @media(prefers-reduced-motion:reduce){.creation-pair{animation:none!important}}
 .presentation-group{position:relative}
-.presentation-heading{position:sticky;top:72px;z-index:40;width:100%;padding:0;margin-bottom:24px;background:#faf9f5}
+.presentation-heading{position:relative;top:auto;z-index:auto;width:100%;padding:0;margin-bottom:24px;background:#faf9f5}
 .creation-turning-page{position:absolute!important;top:44px;left:0;width:100%;z-index:5;pointer-events:none;transform-origin:center center;will-change:transform,opacity;box-shadow:0 12px 28px #0000000d}
 .ppt-scroll-section{overflow:visible!important}
 .ppt-track{position:relative;width:100%}
@@ -808,11 +808,11 @@ function navigateCreation(index,focus=false){selectCreation(index,focus);if(crea
 creationTabs.forEach((tab,index)=>{tab.addEventListener('click',()=>navigateCreation(index));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowDown'||event.key==='ArrowRight')next=(index+1)%creationTabs.length;else if(event.key==='ArrowUp'||event.key==='ArrowLeft')next=(index+creationTabs.length-1)%creationTabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=creationTabs.length-1;else return;event.preventDefault();navigateCreation(next,true);});});
 function syncCreationScroll(){creationFrame=0;if(!creationPinned)return;const top=parseFloat(getComputedStyle(creationSticky).top);const passed=top-creationTrack.getBoundingClientRect().top;selectCreation(Math.max(0,Math.min(2,Math.floor(passed/creationStep+.15))));}
 function layoutCreationScroll(){
- presentationHeading.style.top=(document.querySelector('.detail-nav').getBoundingClientRect().height+0)+'px';
+
  creationPinned=innerWidth>=600&&innerHeight>=500;
  const designHeight=creationHeader.offsetHeight+creationDemo.offsetHeight;
  presentationLabel.style.zoom=1;
- const stickyTop=document.querySelector('.detail-nav').getBoundingClientRect().height+0+presentationHeading.getBoundingClientRect().height+24;
+ const stickyTop=document.querySelector('.detail-nav').getBoundingClientRect().height+24;
  const scale=innerWidth<=1000?1:creationSection.clientWidth/1446;
  creationDemo.style.zoom=scale;creationHeader.style.zoom=scale;syncReadableType();
  const creationTitle=creationHeader.querySelector('[data-node-id="975:42590"]');
@@ -911,7 +911,7 @@ function syncPptScroll(){pptChapters.forEach(chapter=>{
  });}
 function layoutPptChapters(){pptChapters.forEach(chapter=>{
  chapter.pinned=innerWidth>=600&&innerHeight>=500;chapter.section.classList.toggle('ppt-static',!chapter.pinned);
- const top=document.querySelector('.detail-nav').getBoundingClientRect().height+0+presentationHeading.getBoundingClientRect().height+24;
+ const top=document.querySelector('.detail-nav').getBoundingClientRect().height+24;
  const scale=innerWidth<=1000?1:chapter.section.clientWidth/1446;chapter.scale=scale;
  chapter.stage.style.width=innerWidth<=1000?'100%':'1446px';
  fitResponsiveArtwork();
