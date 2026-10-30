@@ -235,7 +235,7 @@ body:has(.video-modal[open]){overflow:hidden}
 .case-intro-facts dl{display:flex;align-items:flex-start;flex-wrap:wrap;gap:32px 64px;margin:0}
 .case-intro-facts dl>div{display:flex;flex-direction:column;gap:8px}
 .case-intro-facts dt{margin:0;color:#898781;font:400 14px/22px var(--sans)}
-.case-intro-facts dd{margin:0;color:#1f2329;font:400 20px/28px var(--sans)}
+.case-intro-facts dd{margin:0;color:#1f2329;font:400 16px/28px var(--sans)}
 .case-intro-highlight{flex:1 1 350px;min-width:0}
 @media(max-width:600px){.case-intro-eyebrow{white-space:normal}.case-intro-facts dl{column-gap:32px}.case-intro-highlight{flex-basis:100%}}
 
@@ -974,4 +974,4 @@ const testingFlow=document.querySelector('.testing-flow'),testingDocs=document.q
 function fitTestingIllustrations(){[[testingFlow,'.testing-flow-canvas'],[testingDocs,'.testing-docs-canvas']].forEach(([box,selector])=>{box.querySelector(selector).style.transform='scale('+box.clientWidth/1440+')';});}
 new ResizeObserver(fitTestingIllustrations).observe(testingFlow);new ResizeObserver(fitTestingIllustrations).observe(testingDocs);fitTestingIllustrations();
 requestAnimationFrame(()=>{layoutCreationScroll();layoutPptChapters();});
-</script><script src="assets/detail/typography.js?v=20261030-integer"></script></body></html>
+</script><script src="assets/detail/typography.js?v=20261030-facts16"></script></body></html>

@@ -7,6 +7,10 @@
   ).map(element => ({ element, size: parseFloat(getComputedStyle(element).fontSize) }));
   function update() {
     records.forEach(({element, size}) => {
+      if (element.matches('.case-intro-facts dd')) {
+        element.style.setProperty('font-size', '16px', 'important');
+        return;
+      }
       let zoom = 1;
       for (let parent = element; parent && parent !== document.body; parent = parent.parentElement) {
         zoom *= Number(getComputedStyle(parent).zoom) || 1;
