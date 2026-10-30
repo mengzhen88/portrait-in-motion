@@ -956,7 +956,7 @@ function syncReadableType(){
   let zoom=1,hasZoom=false;
   for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement){const appliedZoom=Number(getComputedStyle(parent).zoom)||1;if(appliedZoom!==1){zoom*=appliedZoom;hasZoom=true;}}
   const factor=record.referenceScale/zoom;
-  element.style.setProperty('font-size',Math.max(12,record.size*record.referenceScale-2)/zoom+'px','important');
+  element.style.setProperty('font-size',Math.max(Math.ceil(12/zoom),Math.round((record.size*record.referenceScale-2)/zoom))+'px','important');
   if(record.lineHeight)element.style.setProperty('line-height',record.lineHeight*factor+'px','important');
   if(record.letterSpacing)element.style.setProperty('letter-spacing',record.letterSpacing*factor+'px','important');
  });
@@ -974,4 +974,4 @@ const testingFlow=document.querySelector('.testing-flow'),testingDocs=document.q
 function fitTestingIllustrations(){[[testingFlow,'.testing-flow-canvas'],[testingDocs,'.testing-docs-canvas']].forEach(([box,selector])=>{box.querySelector(selector).style.transform='scale('+box.clientWidth/1440+')';});}
 new ResizeObserver(fitTestingIllustrations).observe(testingFlow);new ResizeObserver(fitTestingIllustrations).observe(testingDocs);fitTestingIllustrations();
 requestAnimationFrame(()=>{layoutCreationScroll();layoutPptChapters();});
-</script><script src="assets/detail/typography.js?v=20261030"></script></body></html>
+</script><script src="assets/detail/typography.js?v=20261030-integer"></script></body></html>

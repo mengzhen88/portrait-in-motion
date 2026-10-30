@@ -12,7 +12,7 @@
         zoom *= Number(getComputedStyle(parent).zoom) || 1;
       }
       // Artwork zoom affects its text too. Keep the minimum legible on narrow screens.
-      element.style.setProperty('font-size', Math.max(12, size * zoom - 2) / zoom + 'px', 'important');
+      element.style.setProperty('font-size', Math.max(Math.ceil(12 / zoom), Math.round((size * zoom - 2) / zoom)) + 'px', 'important');
     });
   }
   update();
