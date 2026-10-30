@@ -380,15 +380,15 @@ body:has(.video-modal[open]){overflow:hidden}
 .discover-rule img{max-width:none;display:block}
 .discover-mapping-row{display:grid;grid-template-columns:minmax(334px,332fr) 32.1042px minmax(0,1000fr);gap:48px;align-items:start;width:100%}
 .discover-problem{display:flex;gap:16px;align-items:flex-start;min-width:0}
-.discover-problem-number{flex:none;color:#d97757;font:500 24px/36px "Presentation Numbers",var(--sans)}
-.discover-mapping h3{margin:0;color:#0b0b0b;font:500 24px/36px var(--sans);min-width:0;overflow-wrap:break-word}
+.discover-problem-number{flex:none;color:#d97757;font:500 18px/36px "Presentation Numbers",var(--sans)}
+.discover-mapping h3{margin:0;color:#0b0b0b;font:500 18px/36px var(--sans);min-width:0;overflow-wrap:break-word}
 .discover-link-arrow{height:36px;display:flex;align-items:center;justify-content:center}
 .discover-link-arrow img{transform:scaleY(-1);max-width:none;flex:none}
 .discover-response{display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;min-width:0}
 .discover-response ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
 .discover-response li{display:flex;gap:2px;align-items:flex-start;min-width:0}
 .discover-response li img{flex:none;max-width:none;margin-top:2px}
-.discover-response li p{font:400 20px/32px var(--sans);color:#52514e;min-width:0;white-space:normal;overflow-wrap:break-word}
+.discover-response li p{font:400 16px/32px var(--sans);color:#52514e;min-width:0;white-space:normal;overflow-wrap:break-word}
 @media(max-width:1150px){
  .discover-mapping-row{grid-template-columns:minmax(250px,.9fr) 32.1042px minmax(0,1.6fr);gap:32px}
  .discover-response{grid-template-columns:minmax(0,1fr);gap:16px}
@@ -956,7 +956,8 @@ function syncReadableType(){
   let zoom=1,hasZoom=false;
   for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement){const appliedZoom=Number(getComputedStyle(parent).zoom)||1;if(appliedZoom!==1){zoom*=appliedZoom;hasZoom=true;}}
   const factor=record.referenceScale/zoom;
-  element.style.setProperty('font-size',Math.max(Math.ceil(12/zoom),Math.round((record.size*record.referenceScale-2)/zoom))+'px','important');
+  const mappingSize=element.closest('.discover-mapping')?(element.closest('.discover-response ul')?16:18):null;
+  element.style.setProperty('font-size',(mappingSize??Math.max(Math.ceil(12/zoom),Math.round((record.size*record.referenceScale-2)/zoom)))+'px','important');
   if(record.lineHeight)element.style.setProperty('line-height',record.lineHeight*factor+'px','important');
   if(record.letterSpacing)element.style.setProperty('letter-spacing',record.letterSpacing*factor+'px','important');
  });
