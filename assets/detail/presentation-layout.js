@@ -51,7 +51,7 @@
   layoutCreationScroll=schedule;
   layoutPptChapters=schedule;
   const originalSelect=selectPpt;
-  selectPpt=(chapter,index)=>{originalSelect(chapter,index);schedule();};
+  selectPpt=(chapter,index)=>{originalSelect(chapter,index);schedule();requestAnimationFrame(()=>{if(roomy())window.scrollTo({top:window.scrollY+chapter.section.getBoundingClientRect().top-document.querySelector('.detail-nav').getBoundingClientRect().height-24,behavior:'instant'});});};
   pptChapters.forEach(chapter=>{
     const navigation=document.createElement('nav');navigation.className='presentation-page-nav';
     navigation.setAttribute('aria-label',chapter.section.id==='presentation-02'?'02内容翻页':'03内容翻页');
