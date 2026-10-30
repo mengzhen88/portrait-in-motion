@@ -6,7 +6,12 @@
     [...element.childNodes].some(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim())
   ).map(element => ({ element, size: parseFloat(getComputedStyle(element).fontSize) }));
   function update() {
+    document.querySelectorAll("#configuration-confusion header").forEach(header => header.style.setProperty("font-size", "16px", "important"));
     records.forEach(({element, size}) => {
+      if (element.closest('#configuration-confusion')) {
+        element.style.setProperty('font-size', element.closest('header') ? '16px' : '20px', 'important');
+        return;
+      }
       if (element.matches('p[data-node-id*="63293"],p[data-node-id="1056:22154"]')) {
         element.style.setProperty('font-size', '64px', 'important');
         return;
