@@ -948,6 +948,7 @@ presentation02.querySelectorAll('p,span,.chat-user,.chat-answer').forEach(elemen
  element.style.fontSize=size+'px';element.style.lineHeight=line;element.style.fontWeight=weight;
 });
 profileHeading.style.fontSize='32px';
+document.querySelectorAll('.creation-chapter-heading [data-node-id="975:42590"],.ppt-stage>div:first-child p[data-node-id$="63292"],.config-page-subtitle,.profile-page-subtitle').forEach(element=>element.classList.add('presentation-title-text'));
 var readableTypeRecords;
 function syncReadableType(){
  if(!readableTypeRecords)return;
@@ -956,6 +957,7 @@ function syncReadableType(){
   let zoom=1,hasZoom=false;
   for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement){const appliedZoom=Number(getComputedStyle(parent).zoom)||1;if(appliedZoom!==1){zoom*=appliedZoom;hasZoom=true;}}
   const factor=record.referenceScale/zoom;
+  if(element.classList.contains('presentation-title-text')){element.style.setProperty('font-size','28px','important');element.style.setProperty('line-height','40px','important');return;}
   const mappingSize=element.closest('.discover-mapping')?(element.closest('.discover-response ul')?16:18):null;
   element.style.setProperty('font-size',(mappingSize??Math.max(Math.ceil(12/zoom),Math.round((record.size*record.referenceScale-2)/zoom)))+'px','important');
   if(record.lineHeight)element.style.setProperty('line-height',record.lineHeight*factor+'px','important');
@@ -975,4 +977,4 @@ const testingFlow=document.querySelector('.testing-flow'),testingDocs=document.q
 function fitTestingIllustrations(){[[testingFlow,'.testing-flow-canvas'],[testingDocs,'.testing-docs-canvas']].forEach(([box,selector])=>{box.querySelector(selector).style.transform='scale('+box.clientWidth/1440+')';});}
 new ResizeObserver(fitTestingIllustrations).observe(testingFlow);new ResizeObserver(fitTestingIllustrations).observe(testingDocs);fitTestingIllustrations();
 requestAnimationFrame(()=>{layoutCreationScroll();layoutPptChapters();});
-</script><script src="assets/detail/typography.js?v=20261030-facts16"></script></body></html>
+</script><script src="assets/detail/typography.js?v=20261030-titles28"></script></body></html>

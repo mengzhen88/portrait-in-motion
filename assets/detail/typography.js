@@ -7,6 +7,10 @@
   ).map(element => ({ element, size: parseFloat(getComputedStyle(element).fontSize) }));
   function update() {
     records.forEach(({element, size}) => {
+      if (element.matches('p[data-node-id*="63293"],p[data-node-id="1056:22154"]')) {
+        element.style.setProperty('font-size', '64px', 'important');
+        return;
+      }
       if (element.matches('.case-intro-facts dd')) {
         element.style.setProperty('font-size', '16px', 'important');
         return;
