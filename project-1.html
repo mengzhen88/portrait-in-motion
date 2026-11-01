@@ -1008,6 +1008,7 @@ function syncReadableType(){
   if(record.letterSpacing)element.style.setProperty('letter-spacing',record.letterSpacing*factor+'px','important');
  });
  document.querySelectorAll('.demo-video .video-play').forEach(button=>{let scale=1;for(let p=button.parentElement;p&&p!==document.body;p=p.parentElement)scale*=Number(getComputedStyle(p).zoom)||1;const unit=(1280/1446)/scale;button.style.width=60*unit+'px';button.style.height=60*unit+'px';button.style.padding=18*unit+'px';const icon=button.querySelector('img');if(icon){icon.style.width=24*unit+'px';icon.style.height=24*unit+'px';}});
+ if(window.applyAnyclawTypography)window.applyAnyclawTypography();
 }
 document.querySelectorAll('.feedback-quote p').forEach(p=>{p.style.fontSize='20px';p.style.lineHeight='32px';});
 readableTypeRecords=[...document.querySelectorAll('.case-main p,.case-main h1,.case-main h2,.case-main h3,.case-main button,.case-main time,.case-main span,.case-main div')].filter(element=>{
@@ -1018,7 +1019,7 @@ readableTypeRecords=[...document.querySelectorAll('.case-main p,.case-main h1,.c
 syncReadableType();
 new ResizeObserver(()=>{syncReadableType();}).observe(document.querySelector('.case-main'));
 const testingFlow=document.querySelector('.testing-flow'),testingDocs=document.querySelector('.testing-documents');
-function fitTestingIllustrations(){[[testingFlow,'.testing-flow-canvas'],[testingDocs,'.testing-docs-canvas']].forEach(([box,selector])=>{box.querySelector(selector).style.transform='scale('+box.clientWidth/1440+')';});}
+function fitTestingIllustrations(){[[testingFlow,'.testing-flow-canvas'],[testingDocs,'.testing-docs-canvas']].forEach(([box,selector])=>{box.querySelector(selector).style.transform='scale('+box.clientWidth/1440+')';});if(window.applyAnyclawTypography)window.applyAnyclawTypography();}
 new ResizeObserver(fitTestingIllustrations).observe(testingFlow);new ResizeObserver(fitTestingIllustrations).observe(testingDocs);fitTestingIllustrations();
 requestAnimationFrame(()=>{layoutCreationScroll();layoutPptChapters();});
-</script><script src="assets/detail/typography.js?v=20261030-ppt02"></script></body></html>
+</script><script src="assets/detail/anyclaw-type.js?v=20261101"></script></body></html>
