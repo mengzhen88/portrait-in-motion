@@ -440,6 +440,9 @@ body:has(.video-modal[open]){overflow:hidden}
 /* Figma 18:10062: 64px glyph in a 90px text box, y=-50; gray-to-paper outline. */
 .creation-chapter-heading [data-node-id="1056:22154"]{height:90px!important;line-height:90px!important;width:max-content!important;white-space:nowrap!important;word-break:normal!important;top:-50px!important;-webkit-text-stroke:4px #52514e!important;-webkit-text-fill-color:#faf9f5!important;opacity:.2!important;mask-image:linear-gradient(to bottom,#000 24.2857%,transparent 70.9524%)!important;-webkit-mask-image:linear-gradient(to bottom,#000 24.2857%,transparent 70.9524%)!important}
 
+/* Align the shorter feedback rows with the visible content area. */
+#user-feedback .feedback-quote-row:first-child{transform:translateX(-104px)}
+#user-feedback .feedback-quote-row:nth-child(3){transform:translateX(-144px)}
 /* Requested compact research spacing. */
 .discover-module #feedback-gallery{padding:24px!important;scroll-padding-inline:24px;height:247px!important}
 #user-feedback .feedback-quote{padding:10px 20px 10px 10px;height:60px;min-height:60px;min-width:0;width:max-content;box-sizing:border-box;border:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
