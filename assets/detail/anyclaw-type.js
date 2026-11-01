@@ -62,6 +62,11 @@
  function apply(){
   document.querySelectorAll('[data-node-id="988:128625"],[data-node-id="988:128626"]>div,[data-node-id="988:128633"]>div').forEach(card=>card.style.setProperty('padding',24/scaleOf(card)+'px','important'));
 
+  // Keep illustration insets at 24 visible CSS pixels even on scaled canvases.
+  document.querySelectorAll('.creation-card,.creation-card figure,#configuration-confusion,#configuration-confusion .chat-canvas,#presentation-02 [data-node-id="1058:23316"]>div,[data-node-id="1058:23355"]').forEach(card=>{
+   card.style.setProperty('--illustration-inset',24/scaleOf(card)+'px');
+   card.style.setProperty('padding','var(--illustration-inset)','important');
+  });
   records.forEach(({element,target,line})=>{
    if(!element.isConnected)return;
    const scale=scaleOf(element);
