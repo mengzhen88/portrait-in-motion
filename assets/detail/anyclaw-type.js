@@ -60,6 +60,8 @@
   element.dataset.typeSize=target;
  });
  function apply(){
+  document.querySelectorAll('[data-node-id="988:128625"],[data-node-id="988:128626"]>div,[data-node-id="988:128633"]>div').forEach(card=>card.style.setProperty('padding',24/scaleOf(card)+'px','important'));
+
   records.forEach(({element,target,line})=>{
    if(!element.isConnected)return;
    const scale=scaleOf(element);
