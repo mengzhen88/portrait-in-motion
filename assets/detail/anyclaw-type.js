@@ -67,6 +67,7 @@
    card.style.setProperty('--illustration-inset',24/scaleOf(card)+'px');
    card.style.setProperty('padding','var(--illustration-inset)','important');
   });
+  document.querySelectorAll('#configuration-confusion .chat-example').forEach(card=>card.style.setProperty('--case-caption-gap',12/scaleOf(card)+'px'));
   records.forEach(({element,target,line})=>{
    if(!element.isConnected)return;
    const scale=scaleOf(element);
