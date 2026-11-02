@@ -23,8 +23,8 @@
    if(e.classList.contains('persona-emoji')||id==='919:18048')return fallback;
    return 15;
   }
-  if(e.closest('.discover-mapping'))return e.closest('.discover-response ul')?15:18;
-  if(e.closest('[data-section="1058:22205"]'))return id==='990:19793'?fallback:15;
+  if(e.closest('.discover-mapping'))return e.classList.contains('discover-problem-number')?22:e.closest('.discover-response ul')?18:20;
+  if(e.closest('[data-section="1058:22205"]'))return e.classList.contains('discover-reasoning-label')?20:18;
   if(e.classList.contains('presentation-title-text'))return 28;
   if(e.matches('p[data-node-id*="63293"],p[data-node-id="1056:22154"]'))return 64;
   if(e.closest('.creation-tabs'))return 15;
@@ -48,7 +48,9 @@
   const style=getComputedStyle(element),scale=scaleOf(element);
   const target=targetFor(element,Math.max(12,Math.round(parseFloat(style.fontSize)*scale)));
   let line=parseFloat(style.lineHeight)*scale;
-  if(element.classList.contains('presentation-title-text'))line=40;
+  if(element.closest('.discover-mapping'))line=28;
+  else if(element.closest('.discover-module')&&(element.dataset.nodeId==='981:44282'||element.classList.contains('discover-reasoning-label')))line=32;
+  else if(element.classList.contains('presentation-title-text'))line=40;
   else if(element.matches('p[data-node-id*="63293"],p[data-node-id="1056:22154"]'))line=90;
   else if(element.closest('.detail-nav'))line=24;
   else if(element.closest('.case-intro h1'))line=67.2;
