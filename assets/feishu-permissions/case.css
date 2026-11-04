@@ -15,7 +15,14 @@ body[data-foundation-page="feishu"] .issue h3{font:500 18px/28px var(--md-font-s
 .issue:nth-child(n+2){min-height:272px}body[data-foundation-page="feishu"] .goal>p{color:var(--md-foreground)}
 .strategy-list{display:grid;gap:56px}.strategy-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}.strategy-copy{padding-top:4px;min-width:0}.strategy-heading{display:flex;gap:8px;align-items:baseline;min-width:0}
 body[data-foundation-page="feishu"] .strategy h3{font:500 18px/28px var(--md-font-sans);color:#0b0b0b;margin-bottom:12px}.strategy-number{font:500 20px/28px Case Number,var(--md-font-sans);flex:none;color:#000}
-body[data-foundation-page="feishu"] .strategy-copy p,body[data-foundation-page="feishu"] .comparison p{font:400 15px/24px var(--md-font-sans);color:#52514e}.strategy-copy p+p{margin-top:12px}
+body[data-foundation-page="feishu"] .strategy-copy p,body[data-foundation-page="feishu"] .comparison p{
+ color:var(--token-text-subtle-foreground,var(--subtle-foreground,var(--md-subtle-foreground)));
+ font-family:var(--font-sans,var(--md-font-sans));
+ font-size:15px;
+ font-style:normal;
+ font-weight:var(--font-weight-light,var(--md-font-weight-light));
+ line-height:24px;
+}.strategy-copy p+p{margin-top:12px}
 .media{position:relative;background:var(--md-subtle);border:0;border-radius:17.333px;padding:26px;display:flex;align-items:center;justify-content:center;aspect-ratio:520/343.4167;min-width:0}.media>img{width:100%;height:auto;border-radius:12px}.media .video-cover{width:100%;aspect-ratio:85/53}.comparison{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:32px}.comparison>div{min-width:0}.comparison .media{border-radius:16px;padding:27.17px 26px}.comparison .video-cover{aspect-ratio:467.653/288.939}
 body[data-foundation-page="feishu"] .comparison h3{font:500 16px/24px var(--md-font-sans);color:var(--md-foreground);margin-bottom:12px}.comparison p{min-height:48px;margin-bottom:12px}.solution-heading{display:flex;gap:4px;align-items:center}.idea-emoji{position:relative;display:inline-block;width:20px;height:20px;overflow:hidden;flex:none}.idea-emoji img{position:absolute;width:142.86%;max-width:none;height:130.55%;left:-21.43%;top:-13.1%}
 .final-solution{position:relative}.feedback-badge{position:absolute;right:-26.44px;bottom:13.23px;display:flex;align-items:center;gap:12.167px;white-space:nowrap;padding:7.604px 18.25px 7.604px 7.604px;border:.76px solid var(--md-border);border-radius:999px;background:#fcfcfa;font-size:14px;line-height:20px;color:var(--md-subtle-foreground)}.feedback-avatar{position:relative;flex:none;width:30.417px;height:30.417px;border-radius:50%;overflow:hidden}.feedback-avatar img{position:absolute;width:135%;max-width:none;height:135%;left:-17.5%;top:-17.5%}
