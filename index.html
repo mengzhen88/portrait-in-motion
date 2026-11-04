@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN" data-design-system="miaoda"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="邵梦贞的产品体验设计作品集，涵盖 AI 智能体、企业级数据平台与低代码工具。"><title>邵梦贞 · 产品体验设计师</title><style>
+<!doctype html><html lang="zh-CN" data-design-system="miaoda"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="邵梦贞的产品体验设计作品集，涵盖 AI 智能体、企业级数据平台与低代码工具。"><title>Mengzhen Shao Product Design Portfolio 2026</title><link rel="icon" type="image/png" sizes="32x32" href="assets/identity/favicon-32.png?v=20261105"><link rel="icon" type="image/png" sizes="64x64" href="assets/identity/favicon-64.png?v=20261105"><link rel="shortcut icon" href="favicon.ico?v=20261105"><link rel="apple-touch-icon" sizes="180x180" href="assets/identity/apple-touch-icon.png?v=20261105"><style>
 @font-face{font-family:Home Yuyang;src:url('assets/fonts/home-yuyang.woff2') format('woff2');font-weight:500 700;font-display:swap}
 @font-face{font-family:Home Puhuiti;src:url('assets/fonts/home-puhuiti.woff2') format('woff2');font-weight:500;font-display:swap}
 :root{--paper:var(--md-background);--ink:var(--md-foreground);--muted:var(--md-subtle-foreground);--line:var(--md-border);--sans:"PingFang SC","Noto Sans SC",Arial,sans-serif;--display:"Home Yuyang",var(--sans)}
@@ -83,7 +83,7 @@ function scheduleCompactNavigation(){if(!compactNavigationFrame)compactNavigatio
 window.addEventListener('scroll',scheduleCompactNavigation,{passive:true});
 window.addEventListener('resize',scheduleCompactNavigation);
 new ResizeObserver(scheduleCompactNavigation).observe(document.querySelector('.site-header'));
-function showView(name){document.querySelector('.profile-description').hidden=name==='resume';views.forEach(v=>v.hidden=v.id!==name+'-panel');viewLinks.forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});document.title=(name==='resume'?'个人简历':'项目集合')+' · 邵梦贞';fitArtwork();scheduleCompactNavigation();}
+function showView(name){document.querySelector('.profile-description').hidden=name==='resume';views.forEach(v=>v.hidden=v.id!==name+'-panel');viewLinks.forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});document.title='Mengzhen Shao Product Design Portfolio 2026';fitArtwork();scheduleCompactNavigation();}
 viewLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();history.pushState(null,'',a.getAttribute('href'));showView(a.dataset.view);window.scrollTo({top:0,behavior:'instant'});}));
 function syncRoute(){if(location.hash!=='#contact')showView(location.hash==='#resume'?'resume':'projects');}
 window.addEventListener('hashchange',syncRoute);window.addEventListener('popstate',syncRoute);
