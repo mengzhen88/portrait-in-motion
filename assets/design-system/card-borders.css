@@ -1,0 +1,18 @@
+/* One shared outline width for portfolio cards and media viewers. */
+:root{--portfolio-card-border-width:.5px}
+:is(.md-card,.project-art,.empty-state,.company-logo,
+.creation-pair,.creation-card figure>img,.demo-video,.chat-examples,.chat-answer,
+.feedback-quote,.testing-documents,.testing-feedback-column,.testing-feedback-column h3,
+.testing-feedback,.video-modal,
+.figure-open,.image-viewer,.zoom-hint,.status,.feedback-badge,
+[data-node-id="988:128625"]){
+ border-width:var(--portfolio-card-border-width);
+}
+/* Exported Figma card frames carry inline widths. Keep their colors and style. */
+[data-card-border],.profile-media-slide{border-width:var(--portfolio-card-border-width)!important}
+.creation-card:first-child{border-width:var(--portfolio-card-border-width)}
+#presentation-02 .chat-examples,#presentation-02 .demo-video{border-width:var(--portfolio-card-border-width)}
+/* These capsules use an inset stroke so it stays crisp during movement. */
+#user-feedback .feedback-quote{border-width:0;box-shadow:inset 0 0 0 var(--portfolio-card-border-width) var(--md-border)}
+
+.modal-video-stage::after,.creation-panels::before,.creation-panels::after{border-width:var(--portfolio-card-border-width)}
