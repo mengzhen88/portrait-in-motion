@@ -50,7 +50,7 @@
   chapters.forEach(chapter=>{
    chapter.pinned=innerWidth>=760&&innerHeight>=600;chapter.section.classList.toggle('is-pinned',chapter.pinned);chapter.deck.style.height='';chapter.track.style.height='';chapter.slides.forEach(slide=>{slide.hidden=false;slide.style.transform='';});
    if(chapter.pinned){
-    const titleHeight=chapter.header.getBoundingClientRect().height;const heights=chapter.slides.map(slide=>slide.scrollHeight);const available=Math.max(260,innerHeight-nav.offsetHeight-24-titleHeight-32-32);const deckHeight=Math.min(Math.max(...heights),available);chapter.deck.style.height=deckHeight+'px';
+    const titleHeight=chapter.header.getBoundingClientRect().height;const heights=chapter.slides.map(slide=>slide.scrollHeight);const available=Math.max(260,innerHeight-nav.offsetHeight-32-titleHeight-32-32);const deckHeight=Math.min(Math.max(...heights),available);chapter.deck.style.height=deckHeight+'px';
     chapter.overflows=heights.map(height=>Math.max(0,height-deckHeight));let elapsed=0;chapter.starts=chapter.overflows.map(overflow=>{const start=elapsed;elapsed+=overflow+Math.max(440,innerHeight*.65);return start;});chapter.track.style.height=(chapter.sticky.offsetHeight+elapsed)+'px';
    }
    chapter.slides.forEach((slide,i)=>slide.hidden=i!==chapter.index);
@@ -69,7 +69,7 @@
   const panel=target.closest('.creation-pair');if(panel)selectCreation(panels.indexOf(panel),false,false);
   const chapter=chapters.find(chapter=>chapter.section.contains(target));if(chapter){const slide=target.closest('.ppt-slide');if(slide)selectChapter(chapter,chapter.slides.indexOf(slide));}
   const chapterTarget=chapter&&target===chapter.section?chapter.track:target;
-  const top=scrollY+chapterTarget.getBoundingClientRect().top-nav.offsetHeight-24;scrollTo({top,behavior:'instant'});
+  const top=scrollY+chapterTarget.getBoundingClientRect().top-nav.offsetHeight-32;scrollTo({top,behavior:'instant'});
  }
  document.fonts.ready.then(()=>{layout();requestAnimationFrame(alignFragment);});addEventListener('hashchange',()=>requestAnimationFrame(alignFragment));addEventListener('pageshow',()=>requestAnimationFrame(()=>requestAnimationFrame(alignFragment)));layout();
 })();
