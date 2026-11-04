@@ -2,6 +2,7 @@
 (()=>{
  'use strict';
  const nav=document.querySelector('.detail-nav');
+ let initialNavigation=true;const markInteraction=()=>{initialNavigation=false;};['pointerdown','wheel','keydown'].forEach(event=>addEventListener(event,markInteraction,{once:true,passive:true}));
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const stage=document.querySelector('.compare-stage'),range=stage.querySelector('input');
  range.addEventListener('input',()=>stage.style.setProperty('--split',range.value+'%'));
@@ -71,5 +72,5 @@
   const chapterTarget=chapter&&target===chapter.section?chapter.track:target;
   const top=scrollY+chapterTarget.getBoundingClientRect().top-nav.offsetHeight-32;scrollTo({top,behavior:'instant'});
  }
- document.fonts.ready.then(()=>{layout();requestAnimationFrame(alignFragment);});addEventListener('hashchange',()=>requestAnimationFrame(alignFragment));addEventListener('pageshow',()=>requestAnimationFrame(()=>requestAnimationFrame(alignFragment)));layout();
+ const initialAlign=()=>{if(initialNavigation)alignFragment();};document.fonts.ready.then(()=>{layout();requestAnimationFrame(initialAlign);});addEventListener('hashchange',()=>requestAnimationFrame(alignFragment));addEventListener('pageshow',()=>requestAnimationFrame(()=>requestAnimationFrame(initialAlign)));layout();
 })();
