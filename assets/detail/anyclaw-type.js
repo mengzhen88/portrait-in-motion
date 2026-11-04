@@ -1,6 +1,16 @@
 // Targets are final on-screen CSS pixels, independent of the illustration canvas scale.
 (() => {
  const records=[];
+ // Read the library scale once. Canvas compensation below keeps these sizes visible.
+ const foundation=getComputedStyle(document.documentElement);
+ const libraryScale=['xs','sm','base','lg','xl','2xl','3xl','4xl','5xl','6xl','7xl','8xl','9xl'].map(name=>({
+  name,
+  size:parseFloat(foundation.getPropertyValue('--md-text-'+name+'-size')),
+  line:parseFloat(foundation.getPropertyValue('--md-text-'+name+'-line-height'))
+ })).filter(type=>Number.isFinite(type.size)&&Number.isFinite(type.line));
+ function libraryType(size,line){
+  return libraryScale.reduce((best,type)=>Math.abs(type.size-size)<=Math.abs(best.size-size)?type:best,libraryScale[0])||{size,line};
+ }
  function scaleOf(element){
   let scale=1;
   for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement){
@@ -58,8 +68,12 @@
   else if(element.closest('.testing-metrics strong'))line=67.2;
   else if(element.closest('.usability-testing h2,.usability-testing h3'))line=40;
   else if(element.closest('.creation-card'))line=element.matches('h3')?28:26;
-  records.push({element,target,line:Number.isFinite(line)?Math.max(target*1.2,line):null});
-  element.dataset.typeSize=target;
+  const type=libraryType(target,line);
+  if(style.fontFamily.toLowerCase().includes('pingfang'))element.style.setProperty('font-family','var(--md-font-sans)');
+  const decorative=element.classList.contains('persona-emoji');
+  records.push({element,target:decorative?target:type.size,line:decorative?line:type.line});
+  element.dataset.typeSize=decorative?target:type.size;
+  if(!decorative)element.dataset.typeToken='text/'+type.name;
  });
  function apply(){
   document.querySelectorAll('[data-node-id="988:128625"],[data-node-id="988:128626"]>div,[data-node-id="988:128633"]>div').forEach(card=>card.style.setProperty('padding',24/scaleOf(card)+'px','important'));

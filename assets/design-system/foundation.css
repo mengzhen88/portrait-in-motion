@@ -1,0 +1,64 @@
+/* Shared primitives and portfolio adapters, based on Miaoda's Light foundation. */
+html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+body { background:var(--md-background); color:var(--md-foreground); font-family:var(--md-font-sans); font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+button,input,select,textarea { font-family:var(--md-font-sans); }
+:is(a,button,input,select,textarea):focus-visible { outline:2px solid var(--md-ring); outline-offset:3px; }
+.md-button { display:inline-flex; align-items:center; justify-content:center; font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); font-weight:var(--md-font-weight-medium); cursor:pointer; }
+.md-button--primary { background:var(--md-primary); color:var(--md-primary-foreground); border-color:var(--md-border); }
+.md-button--primary:hover { background:var(--md-primary); opacity:.9; }
+.md-button--ghost { background:var(--md-accent); color:var(--md-subtle-foreground); }
+.md-button--ghost:hover,.md-button--ghost[aria-pressed="true"] { background:var(--md-secondary); color:var(--md-accent-foreground); }
+.md-card { background:var(--md-card); color:var(--md-card-foreground); border-color:var(--md-border); }
+.md-input { color:var(--md-foreground); background:var(--md-background); border:1px solid var(--md-input); font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.md-input::placeholder { color:var(--md-placeholder-foreground); }
+.md-text-xs { font-size:var(--md-text-xs-size); line-height:var(--md-text-xs-line-height); }
+.md-text-sm { font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+.md-text-base { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.md-text-lg { font-size:var(--md-text-lg-size); line-height:var(--md-text-lg-line-height); }
+.md-text-xl { font-size:var(--md-text-xl-size); line-height:var(--md-text-xl-line-height); }
+.md-text-2xl { font-size:var(--md-text-2xl-size); line-height:var(--md-text-2xl-line-height); }
+.md-text-3xl { font-size:var(--md-text-3xl-size); line-height:var(--md-text-3xl-line-height); }
+.md-text-muted { color:var(--md-muted-foreground); }
+.md-text-secondary { color:var(--md-subtle-foreground); }
+/* Existing page components consume the same roles as the reusable primitives. */
+.site-header .nav-link,.site-header .contact-button,.filter { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.site-header .contact-button { color:var(--md-primary-foreground); }
+.site-header .contact-button:hover { background:var(--md-primary); opacity:.9; }
+.project-copy h2 { font-family:var(--md-font-sans); font-size:var(--md-text-xl-size); line-height:var(--md-text-xl-line-height); font-weight:var(--md-font-weight-medium); }
+.project-copy p,.profile-role,.profile-description,.intro-copy,.cv-copy p { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); color:var(--md-subtle-foreground); }
+.profile-name,.resume-intro h1 { font-family:var(--md-font-sans); }
+.resume-intro h1 { font-size:var(--md-text-5xl-size); line-height:var(--md-text-5xl-line-height); }
+.cv-section>h2 { font-size:var(--md-text-2xl-size); line-height:var(--md-text-2xl-line-height); }
+.cv-copy h3,.cv-date { font-size:var(--md-text-xl-size); line-height:var(--md-text-xl-line-height); }
+.contact-footer>p { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.contact-details a { font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+.detail-nav,.nav { background:var(--md-background); color:var(--md-foreground); font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+.designer,.designer-role,.who span { font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+.case-intro h1,.case-hero h1,body[data-foundation-page="feishu"] h1 { font-family:var(--md-font-sans); font-size:var(--md-text-5xl-size); line-height:var(--md-text-5xl-line-height); font-weight:var(--md-font-weight-semibold); }
+.case-intro-facts dt,.facts dt,.project-facts dt { font-size:var(--md-text-xs-size); line-height:var(--md-text-xs-line-height); color:var(--md-muted-foreground); }
+.case-intro-facts dd,.facts dd,.project-facts dd { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.eyebrow,.case-intro-eyebrow,.section-kicker,.testing-label { font-family:var(--md-font-mono); }
+.eyebrow { font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+.section-kicker { font-size:var(--md-text-xs-size); line-height:var(--md-text-xs-line-height); }
+.detail-nav .back-link { font-size:inherit; line-height:inherit; }
+.presentation-title-text { color:var(--md-foreground)!important; }
+.presentation-title-text.config-page-subtitle,.presentation-title-text.profile-page-subtitle { color:var(--portfolio-accent)!important; }
+.detail-heading h1 { font-size:var(--md-text-5xl-size); line-height:var(--md-text-5xl-line-height); }
+.fact-label { font-size:var(--md-text-xs-size); line-height:var(--md-text-xs-line-height); }
+.fact-value { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+body[data-foundation-page="feishu"] .metric span { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.video-modal-title { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+.video-toolbar,.modal-video-options select { font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+.video-modal-close:focus-visible { outline-color:var(--md-ring); }
+body[data-foundation-page="feishu"] .section>p,body[data-foundation-page="feishu"] .issue p,body[data-foundation-page="feishu"] .strategy-copy p,body[data-foundation-page="feishu"] .comparison p,body[data-foundation-page="feishu"] .note { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+body[data-foundation-page="feishu"] .section h2 { font-size:var(--md-text-2xl-size); line-height:var(--md-text-2xl-line-height); font-weight:var(--md-font-weight-medium); }
+body[data-foundation-page="feishu"] .issue h3,body[data-foundation-page="feishu"] .strategy h3 { font-size:var(--md-text-lg-size); line-height:var(--md-text-lg-line-height); }
+body[data-foundation-page="feishu"] .comparison h3 { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+body[data-foundation-page="byteio"] h2 { font-size:var(--md-text-3xl-size); line-height:var(--md-text-3xl-line-height); }
+body[data-foundation-page="byteio"] h3 { font-size:var(--md-text-xl-size); line-height:var(--md-text-xl-line-height); }
+body[data-foundation-page="byteio"] .decision h3 { font-size:var(--md-text-2xl-size); line-height:var(--md-text-2xl-line-height); }
+body[data-foundation-page="byteio"] .reading p,body[data-foundation-page="byteio"] .problem-grid p,body[data-foundation-page="byteio"] .decision-note p { font-size:var(--md-text-base-size); line-height:var(--md-text-base-line-height); }
+body[data-foundation-page="byteio"] figcaption,body[data-foundation-page="byteio"] .summary-grid p,body[data-foundation-page="byteio"] .supporting,body[data-foundation-page="byteio"] .status { font-size:var(--md-text-sm-size); line-height:var(--md-text-sm-line-height); }
+@media(max-width:760px) {
+  .case-hero h1,body[data-foundation-page="feishu"] h1,.resume-intro h1,.detail-heading h1 { font-size:var(--md-text-4xl-size); line-height:var(--md-text-4xl-line-height); }
+}
