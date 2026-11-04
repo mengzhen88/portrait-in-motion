@@ -49,7 +49,7 @@ body{background:#fff}
 const resumeDoodle=document.querySelector('.portrait-doodle');
 Promise.all([...resumeDoodle.querySelectorAll('img')].map(frame=>frame.decode())).then(()=>resumeDoodle.classList.add('is-ready')).catch(()=>{});
 const views=[...document.querySelectorAll('main>section')];const viewLinks=[...document.querySelectorAll('[data-view]')];
-function showView(name){views.forEach(v=>v.hidden=v.id!==name+'-panel');viewLinks.forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});document.title=(name==='resume'?'个人简历':'项目集合')+' · 邵梦贞';fitArtwork();}
+function showView(name){document.querySelector('.profile-description').hidden=name==='resume';views.forEach(v=>v.hidden=v.id!==name+'-panel');viewLinks.forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});document.title=(name==='resume'?'个人简历':'项目集合')+' · 邵梦贞';fitArtwork();}
 viewLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();history.pushState(null,'',a.getAttribute('href'));showView(a.dataset.view);window.scrollTo({top:0,behavior:'instant'});}));
 function syncRoute(){if(location.hash!=='#contact')showView(location.hash==='#resume'?'resume':'projects');}
 window.addEventListener('hashchange',syncRoute);window.addEventListener('popstate',syncRoute);
