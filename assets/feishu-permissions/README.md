@@ -17,5 +17,6 @@ moved before the movie data for progressive loading; encoded frames are unchange
 The page requests MP4 data only after the visitor clicks a cover. The original
 product proposal is a static image and intentionally has no play button.
 
-The background diagram is exported from node `113:19847`; the issue illustrations
-use the source sprite with the 160×96 crops from the design. Text is live HTML.
+The background diagram uses the original 4096×883 source image in node
+`184:7249`. The issue illustrations use the transparent source sprite from
+`111:18847` with its original 160×96 mask/crops. Text is live HTML.
