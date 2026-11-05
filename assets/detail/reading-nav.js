@@ -74,6 +74,31 @@
   progress.append(fill);
   document.body.append(nav, progress);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  // A soft lens follows the pointer vertically, strongest at its center.
+  let lensFrame = 0, pointerY = null;
+  function resetLens() {
+    pointerY = null;
+    cancelAnimationFrame(lensFrame); lensFrame = 0;
+    links.forEach(link => link.style.removeProperty('--case-lens'));
+  }
+  function renderLens() {
+    lensFrame = 0;
+    if (pointerY === null || reducedMotion.matches || document.documentElement.hasAttribute('data-case-reader-compact')) return;
+    links.forEach(link => {
+      const rect = link.getBoundingClientRect();
+      const distance = rect.top + rect.height / 2 - pointerY;
+      const influence = Math.exp(-(distance * distance) / (2 * 30 * 30));
+      link.style.setProperty('--case-lens', influence.toFixed(4));
+    });
+  }
+  function moveLens(event) {
+    if (event.pointerType === 'touch') return;
+    pointerY = event.clientY;
+    if (!lensFrame) lensFrame = requestAnimationFrame(renderLens);
+  }
+  nav.addEventListener('pointerenter', moveLens);
+  nav.addEventListener('pointermove', moveLens);
+  nav.addEventListener('pointerleave', resetLens);
   let active = -1, frame = 0, jump = null;
   const headerHeight = () => document.querySelector('body > .detail-nav, body > .nav')?.getBoundingClientRect().height || 68;
   function setActive(index) {
@@ -142,9 +167,11 @@
   addEventListener('scroll', scheduleUpdate, { passive: true });
   addEventListener('scrollend', () => { jump = null; scheduleUpdate(); });
   function layoutMode() {
-    const railLeft = Math.max(16, Math.min(40, innerWidth * .026));
+    const railLeft = 24;
     const compact = innerWidth < 1200 || matchMedia('(hover: none)').matches || main.getBoundingClientRect().left < railLeft + 64;
     document.documentElement.toggleAttribute('data-case-reader-compact', compact);
+    if (compact) resetLens();
+    else if (pointerY !== null && !lensFrame) lensFrame = requestAnimationFrame(renderLens);
   }
   addEventListener('resize', () => { layoutMode(); scheduleUpdate(); }, { passive: true });
   addEventListener('hashchange', scheduleUpdate);

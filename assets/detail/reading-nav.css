@@ -2,16 +2,16 @@
 :root { --case-reader-accent: var(--portfolio-accent, #d97757); }
 .case-reading-progress { position: fixed; inset: 0 0 auto; height: 2px; z-index: 1002; pointer-events: none; }
 .case-reading-progress > span { display: block; width: 100%; height: 100%; background: var(--case-reader-accent); transform: scaleX(0); transform-origin: left; }
-.case-reading-nav { position: fixed; left: clamp(16px, 2.6vw, 40px); top: 50%; transform: translateY(-50%); z-index: 990; font: 400 12px/20px var(--md-font-sans, sans-serif); color: var(--md-subtle-foreground, #646a73); }
-.case-reading-nav ul { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 12px 8px; list-style: none; border-radius: 12px; }
+.case-reading-nav { position: fixed; left: 24px; top: 50%; transform: translateY(-50%); z-index: 990; font: 400 11px/16px var(--md-font-sans, sans-serif); color: var(--md-subtle-foreground, #646a73); }
+.case-reading-nav ul { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 12px 0; list-style: none; border-radius: 12px; }
 .case-reading-nav li { margin: 0; padding: 0; }
-.case-reading-nav a { display: flex; align-items: center; gap: 12px; min-height: 22px; width: 40px; color: inherit; text-decoration: none; border: 0; }
-.case-reading-mark { width: 14px; height: 2px; border-radius: 2px; background: var(--md-muted-foreground, #8f959e); flex: none; opacity: .5; transition: width .28s ease, background-color .2s ease, opacity .2s ease; }
+.case-reading-nav a { display: grid; grid-template-columns: 48px max-content; align-items: center; column-gap: 12px; min-height: 16px; width: 60px; color: inherit; text-decoration: none; border: 0; }
+.case-reading-mark { width: calc(var(--case-mark-base, 12px) + var(--case-lens, 0) * 28px); height: 2px; border-radius: 2px; background: var(--md-muted-foreground, #8f959e); flex: none; opacity: calc(.4 + var(--case-lens, 0) * .6); transform: scaleY(calc(1 + var(--case-lens, 0) * .5)); transform-origin: left center; transition: width .18s cubic-bezier(.22,1,.36,1), transform .18s ease, background-color .2s ease, opacity .18s ease; }
 .case-reading-label { white-space: nowrap; opacity: 0; transform: translateX(-6px); pointer-events: none; transition: opacity .2s ease, transform .25s ease; }
 .case-reading-nav a[aria-current="location"] { color: var(--md-foreground, #1f2329); }
-.case-reading-nav a[aria-current="location"] .case-reading-mark { width: 28px; background: var(--case-reader-accent); opacity: 1; }
-.case-reading-nav:is(:hover, :focus-within) a { width: auto; padding-right: 12px; }
-.case-reading-nav:is(:hover, :focus-within) .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
+.case-reading-nav a[aria-current="location"] .case-reading-mark { --case-mark-base: 20px; background: var(--case-reader-accent); opacity: 1; }
+.case-reading-nav:is(:hover, :has(a:focus-visible)) a { width: auto; padding-right: 12px; }
+.case-reading-nav:is(:hover, :has(a:focus-visible)) .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
 .case-reading-nav a:hover { color: var(--md-foreground, #1f2329); }
 .case-reading-nav a:hover .case-reading-mark { opacity: 1; }
 .case-reading-nav a:focus-visible, .case-reading-toggle:focus-visible { outline: 2px solid var(--case-reader-accent); outline-offset: 4px; border-radius: 3px; }
@@ -23,7 +23,7 @@ html[data-case-reader-compact] .case-reading-toggle-label { max-width: 210px; ov
 html[data-case-reader-compact] .case-reading-toggle-count { color: var(--md-muted-foreground, #8f959e); font-variant-numeric: tabular-nums; }
 html[data-case-reader-compact] .case-reading-nav ul { display: none; position: absolute; right: 0; bottom: 52px; min-width: 220px; max-width: calc(100vw - 40px); max-height: calc(100dvh - 180px); overflow-y: auto; padding: 12px; background: rgba(255,255,255,.97); border: .5px solid var(--md-border, #ddd); box-shadow: 0 8px 32px rgba(31,35,41,.1); }
 html[data-case-reader-compact] .case-reading-nav.is-open ul { display: flex; }
-html[data-case-reader-compact] .case-reading-nav a, html[data-case-reader-compact] .case-reading-nav:is(:hover, :focus-within) a { min-height: 36px; width: auto; padding-right: 12px; }
+html[data-case-reader-compact] .case-reading-nav a, html[data-case-reader-compact] .case-reading-nav:is(:hover, :has(a:focus-visible)) a { display: flex; gap: 12px; min-height: 36px; width: auto; padding-right: 12px; }
 html[data-case-reader-compact] .case-reading-nav .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) {
   .case-reading-mark, .case-reading-label { transition: none; }
