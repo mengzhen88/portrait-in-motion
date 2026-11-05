@@ -7,11 +7,11 @@
 .case-reading-nav li { margin: 0; padding: 0; }
 .case-reading-nav a { display: grid; grid-template-columns: 36px max-content; align-items: center; column-gap: 8px; min-height: 15px; width: 60px; color: inherit; text-decoration: none; border: 0; }
 .case-reading-mark { width: calc(var(--case-mark-base, 10.8px) + var(--case-lens, 0) * 25.2px); height: 2px; border-radius: 2px; background: var(--md-muted-foreground, #8f959e); flex: none; opacity: calc(.4 + var(--case-lens, 0) * .6); transition: width .18s cubic-bezier(.22,1,.36,1), background-color .2s ease, opacity .18s ease; }
-.case-reading-label { white-space: nowrap; opacity: 0; transform: translateX(-6px); pointer-events: none; transition: opacity .2s ease, transform .25s ease; }
+.case-reading-label { white-space: nowrap; opacity: 0; text-align: left; transform: scale(1); transform-origin: left center; pointer-events: none; transition: opacity .2s ease, transform .18s cubic-bezier(.22,1,.36,1); }
 .case-reading-nav a[aria-current="location"] { color: var(--md-subtle-foreground, #646a73); }
 .case-reading-nav a[aria-current="location"] .case-reading-mark { --case-mark-base: calc(18px - var(--case-lens, 0) * 7.2px); background: var(--case-reader-accent); opacity: 1; }
 .case-reading-nav:is(:hover, :has(a:focus-visible)) a { width: auto; padding-right: 12px; }
-.case-reading-nav:is(:hover, :has(a:focus-visible)) .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
+.case-reading-nav:is(:hover, :has(a:focus-visible)) .case-reading-label { opacity: 1; transform: scale(calc(1 + var(--case-lens, 0) * .06)); pointer-events: auto; }
 .case-reading-nav a:hover { color: var(--md-subtle-foreground, #646a73); }
 .case-reading-nav a:hover .case-reading-mark { opacity: 1; }
 .case-reading-nav a:focus-visible, .case-reading-toggle:focus-visible { outline: 2px solid var(--case-reader-accent); outline-offset: 4px; border-radius: 3px; }
