@@ -13,7 +13,7 @@
     background: '项目背景与目标', process: '设计过程与判断',
     presentation: '方案与产出', outcome: '项目结果', reflection: '总结与思考'
   };
-  const sections = [...main.querySelectorAll(':scope > section, :scope > .presentation-group > section')];
+  const sections = [...main.querySelectorAll(':scope > section, :scope > .presentation-group')];
   if (sections.filter(section => !section.contains(main.querySelector('h1'))).length < 2) return;
   const intro = main.querySelector('.case-intro, h1');
   const entries = [];
@@ -28,6 +28,10 @@
   if (intro) add(intro, '项目概览', 'case-overview');
   sections.forEach(section => {
     if (section === intro || section.contains(intro)) return;
+    if (section.classList.contains('presentation-group')) {
+      add(section, '设计方案', 'design-solution');
+      return;
+    }
     let label = sectionLabels[section.id];
     if (section.classList.contains('background')) label = '项目背景';
     if (section.classList.contains('discover')) label = '问题与设计目标';
