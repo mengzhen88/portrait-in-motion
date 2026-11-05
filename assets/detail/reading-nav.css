@@ -10,7 +10,6 @@
 .case-reading-label { white-space: nowrap; opacity: 0; transform: translateX(-6px); pointer-events: none; transition: opacity .2s ease, transform .25s ease; }
 .case-reading-nav a[aria-current="location"] { color: var(--md-foreground, #1f2329); }
 .case-reading-nav a[aria-current="location"] .case-reading-mark { width: 28px; background: var(--case-reader-accent); opacity: 1; }
-.case-reading-nav:is(:hover, :focus-within) ul { background: rgba(255,255,255,.94); box-shadow: 0 4px 24px rgba(31,35,41,.06); backdrop-filter: blur(16px); }
 .case-reading-nav:is(:hover, :focus-within) a { width: auto; padding-right: 12px; }
 .case-reading-nav:is(:hover, :focus-within) .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
 .case-reading-nav a:hover { color: var(--md-foreground, #1f2329); }
