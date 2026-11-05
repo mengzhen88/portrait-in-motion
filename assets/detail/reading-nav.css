@@ -18,16 +18,14 @@
 .case-reading-nav a:focus-visible, .case-reading-toggle:focus-visible { outline: 2px solid var(--case-reader-accent); outline-offset: 4px; border-radius: 3px; }
 .case-reading-toggle { display: none; }
 body:has(dialog[open]) :is(.case-reading-nav, .case-reading-progress) { visibility: hidden; }
-@media (max-width: 1199px), (hover: none) {
-  .case-reading-nav { top: auto; left: auto; right: 20px; bottom: max(20px, env(safe-area-inset-bottom)); transform: none; }
-  .case-reading-toggle { display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 40px); min-height: 40px; padding: 9px 14px; border: .5px solid var(--md-border, #ddd); border-radius: 10px; background: rgba(250,250,252,.94); backdrop-filter: blur(20px); color: var(--md-foreground, #1f2329); box-shadow: 0 2px 12px rgba(31,35,41,.06); font: inherit; cursor: pointer; }
-  .case-reading-toggle-label { max-width: 210px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .case-reading-toggle-count { color: var(--md-muted-foreground, #8f959e); font-variant-numeric: tabular-nums; }
-  .case-reading-nav ul { display: none; position: absolute; right: 0; bottom: 52px; min-width: 220px; max-width: calc(100vw - 40px); max-height: calc(100dvh - 180px); overflow-y: auto; padding: 12px; background: rgba(255,255,255,.97); border: .5px solid var(--md-border, #ddd); box-shadow: 0 8px 32px rgba(31,35,41,.1); }
-  .case-reading-nav.is-open ul { display: flex; }
-  .case-reading-nav a, .case-reading-nav:is(:hover, :focus-within) a { min-height: 36px; width: auto; padding-right: 12px; }
-  .case-reading-nav .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
-}
+html[data-case-reader-compact] .case-reading-nav { top: auto; left: auto; right: 20px; bottom: max(20px, env(safe-area-inset-bottom)); transform: none; }
+html[data-case-reader-compact] .case-reading-toggle { display: flex; align-items: center; gap: 12px; max-width: calc(100vw - 40px); min-height: 40px; padding: 9px 14px; border: .5px solid var(--md-border, #ddd); border-radius: 10px; background: rgba(250,250,252,.94); backdrop-filter: blur(20px); color: var(--md-foreground, #1f2329); box-shadow: 0 2px 12px rgba(31,35,41,.06); font: inherit; cursor: pointer; }
+html[data-case-reader-compact] .case-reading-toggle-label { max-width: 210px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html[data-case-reader-compact] .case-reading-toggle-count { color: var(--md-muted-foreground, #8f959e); font-variant-numeric: tabular-nums; }
+html[data-case-reader-compact] .case-reading-nav ul { display: none; position: absolute; right: 0; bottom: 52px; min-width: 220px; max-width: calc(100vw - 40px); max-height: calc(100dvh - 180px); overflow-y: auto; padding: 12px; background: rgba(255,255,255,.97); border: .5px solid var(--md-border, #ddd); box-shadow: 0 8px 32px rgba(31,35,41,.1); }
+html[data-case-reader-compact] .case-reading-nav.is-open ul { display: flex; }
+html[data-case-reader-compact] .case-reading-nav a, html[data-case-reader-compact] .case-reading-nav:is(:hover, :focus-within) a { min-height: 36px; width: auto; padding-right: 12px; }
+html[data-case-reader-compact] .case-reading-nav .case-reading-label { opacity: 1; transform: none; pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) {
   .case-reading-mark, .case-reading-label { transition: none; }
 }

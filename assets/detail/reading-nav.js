@@ -141,9 +141,15 @@
   ['wheel', 'touchstart'].forEach(type => addEventListener(type, () => { jump = null; }, { passive: true }));
   addEventListener('scroll', scheduleUpdate, { passive: true });
   addEventListener('scrollend', () => { jump = null; scheduleUpdate(); });
-  addEventListener('resize', scheduleUpdate, { passive: true });
+  function layoutMode() {
+    const railLeft = Math.max(16, Math.min(40, innerWidth * .026));
+    const compact = innerWidth < 1200 || matchMedia('(hover: none)').matches || main.getBoundingClientRect().left < railLeft + 64;
+    document.documentElement.toggleAttribute('data-case-reader-compact', compact);
+  }
+  addEventListener('resize', () => { layoutMode(); scheduleUpdate(); }, { passive: true });
   addEventListener('hashchange', scheduleUpdate);
   addEventListener('pageshow', scheduleUpdate);
-  new ResizeObserver(scheduleUpdate).observe(main);
+  new ResizeObserver(() => { layoutMode(); scheduleUpdate(); }).observe(main);
+  layoutMode();
   update();
 })();
