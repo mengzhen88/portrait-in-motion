@@ -45,6 +45,19 @@ body{background:#fff}
 .header-portrait-crop{border:0}
 .header-portrait-crop::after{content:"";position:absolute;inset:0;padding:1px;border-radius:12px;background:linear-gradient(130deg,rgba(111,137,255,.48) 0%,rgba(241,117,213,.40) 43%,rgba(232,230,220,.8) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 
+/* Align the main navigation with the portrait row, independently of the description. */
+@media(min-width:761px){
+ .site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 32px;align-items:start}
+ .site-header>.profile-summary{display:contents}
+ .site-header .profile-identity{grid-column:1;grid-row:1}
+ .site-header .profile-description{grid-column:1;grid-row:2;width:min(635px,calc((100vw - 64px)*.52),100%)}
+ .site-header>.site-nav{grid-column:2;grid-row:1;align-self:end;justify-self:end;padding-top:0}
+}
+@media(min-width:761px) and (max-width:1050px){
+ .site-header{column-gap:40px}
+ .site-header .profile-description{width:min(635px,calc((100vw - 64px)*.55),100%)}
+}
+
 /* Compact navigation shown after the original navigation scrolls out of view. */
 .home-sticky-nav{position:fixed;inset:0 0 auto;z-index:1000;height:52px;background:rgba(250,250,252,.8);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid rgba(0,0,0,.16);opacity:0;visibility:hidden;transform:translateY(-100%);pointer-events:none;transition:transform .24s cubic-bezier(.28,.11,.32,1),opacity .24s cubic-bezier(.28,.11,.32,1),visibility .24s}
 .home-sticky-nav.is-visible{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
