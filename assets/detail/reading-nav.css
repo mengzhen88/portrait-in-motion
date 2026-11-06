@@ -6,7 +6,7 @@
 .case-reading-nav ul { display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 12px 0; list-style: none; border-radius: 12px; }
 .case-reading-nav li { margin: 0; padding: 0; }
 .case-reading-nav a { display: grid; grid-template-columns: 28px max-content; align-items: center; column-gap: 8px; min-height: 15px; width: 60px; color: inherit; text-decoration: none; border: 0; }
-.case-reading-mark { width: calc(6px + var(--case-lens, 0) * 22px); height: 2px; border-radius: 2px; background: var(--md-muted-foreground, #8f959e); flex: none; opacity: calc(.4 + var(--case-lens, 0) * .6); transition: width .18s cubic-bezier(.22,1,.36,1), background-color .2s ease, opacity .18s ease; }
+.case-reading-mark { width: calc(8px + var(--case-lens, 0) * 20px); height: 2px; border-radius: 2px; background: var(--md-muted-foreground, #8f959e); flex: none; opacity: calc(.4 + var(--case-lens, 0) * .6); transition: width .18s cubic-bezier(.22,1,.36,1), background-color .2s ease, opacity .18s ease; }
 .case-reading-label { white-space: nowrap; opacity: 0; text-align: left; transform: scale(1); transform-origin: left center; pointer-events: none; transition: opacity .2s ease, transform .18s cubic-bezier(.22,1,.36,1); }
 .case-reading-nav a[aria-current="location"] { color: var(--md-subtle-foreground, #646a73); }
 .case-reading-nav a[aria-current="location"] .case-reading-mark { background: var(--case-reader-accent); opacity: 1; }
