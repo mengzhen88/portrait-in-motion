@@ -32,7 +32,7 @@
       add(section, '设计方案', 'design-solution');
       return;
     }
-    let label = sectionLabels[section.id];
+    let label = section.dataset.readingLabel || sectionLabels[section.id];
     if (section.classList.contains('background')) label = '项目背景';
     if (section.classList.contains('discover')) label = '问题与设计目标';
     if (!label) label = section.querySelector('h2')?.textContent.trim();
