@@ -57,7 +57,7 @@ def build_case(project):
 <section class="case-block" id="outcome"><h2>项目结果</h2><div class="case-results">{results}</div><p class="result-note">{esc(project['resultNote'])}</p>{related_link}</section>
 <section class="case-block" id="reflection"><h2>总结与思考</h2><p class="reading">{esc(project['reflection'])}</p></section>
 {render_pager("project-" + project["id"] + ".html")}</main>
-<script src="assets/detail/reading-nav.js?v=20261105-parent-chapter" defer></script><script src="assets/detail/image-viewer.js?v=20261106-image-dialog" defer></script></body></html>
+<script src="assets/detail/reading-nav.js?v=20261105-parent-chapter" defer></script><script src="assets/detail/image-viewer.js?v=20261106-image-dialog-preview" defer></script></body></html>
 '''
     (ROOT / f'project-{project["id"]}.html').write_text(html)
 
