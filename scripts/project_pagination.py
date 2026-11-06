@@ -6,7 +6,7 @@ import json
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-STYLESHEET = '<link rel="stylesheet" href="assets/detail/project-pagination.css?v=20261106-pager">'
+STYLESHEET = '<link rel="stylesheet" href="assets/detail/project-pagination.css?v=20261106-violet">'
 
 
 class ProjectCards(HTMLParser):

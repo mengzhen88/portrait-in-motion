@@ -25,7 +25,7 @@
 .project-pagination__link:is(:hover, :focus-visible) .project-pagination__arrow { opacity: 1; transform: translateX(0); }
 .project-pagination__link--prev:is(:hover, :focus-visible) .project-pagination__title { transform: translateX(22px); }
 .project-pagination__link--next:is(:hover, :focus-visible) .project-pagination__title { transform: translateX(-22px); }
-.project-pagination__link:focus-visible { outline: 2px solid var(--portfolio-accent, #d97757); outline-offset: 6px; border-radius: 2px; }
+.project-pagination__link:focus-visible { outline: 2px solid var(--portfolio-accent, #4E22FF); outline-offset: 6px; border-radius: 2px; }
 @media (hover: none) {
   .project-pagination__link .project-pagination__arrow { opacity: 1; transform: none; }
   .project-pagination__link--prev .project-pagination__title { transform: translateX(22px); }

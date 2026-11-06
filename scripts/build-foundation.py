@@ -31,7 +31,7 @@ for token in data['tokens']:
     lines.append(f"  {token['cssVariable']}: {value(token)};")
 lines += [
     '  /* Portfolio identity extends the neutral library theme. */',
-    '  --portfolio-accent: #d97757;',
+    '  --portfolio-accent: #4E22FF;',
     '  --paper: var(--md-background);',
     '  --ink: var(--md-foreground);',
     '  --muted: var(--md-subtle-foreground);',
@@ -40,7 +40,6 @@ lines += [
     '  --display: var(--md-font-sans);',
     '  --mono: var(--md-font-mono);',
     '}',
-    ':root[data-case="byteio"] { --portfolio-accent: #6558de; }',
     '/* Dark values are available only on explicitly selected dark surfaces. */',
     '[data-md-theme="dark"] {',
 ]

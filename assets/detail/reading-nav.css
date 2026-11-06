@@ -1,5 +1,5 @@
 /* Shared case-study reading navigation, inspired by helloayushi.com. */
-:root { --case-reader-accent: var(--portfolio-accent, #d97757); }
+:root { --case-reader-accent: var(--portfolio-accent, #4E22FF); }
 .case-reading-progress { position: fixed; inset: 0 0 auto; height: 2px; z-index: 1002; pointer-events: none; }
 .case-reading-progress > span { display: block; width: 100%; height: 100%; background: var(--case-reader-accent); transform: scaleX(0); transform-origin: left; }
 .case-reading-nav { position: fixed; left: 24px; top: 50%; transform: translateY(-50%); z-index: 990; font: 400 11px/15px var(--md-font-sans, sans-serif); color: var(--md-muted-foreground, #8f959e); }
