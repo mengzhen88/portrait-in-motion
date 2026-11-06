@@ -21,6 +21,9 @@
 @media(max-width:420px){.profile-identity{gap:16px}.profile-name{font-size:32px}.site-nav{width:100%;justify-content:space-between;gap:12px}.contact-button{padding-inline:14px}.contact-details{gap:12px 24px}.project-art{border-radius:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
+/* Resume content ends 80px before the contact footer, without a forced minimum height. */
+.page-content:has(>#resume-panel:not([hidden])){padding-bottom:80px;min-height:0}
+
 /* Homepage identity and navigation, Figma 18:15504. */
 .site-header .portrait-small{width:80px;height:86.061px}
 .header-portrait-crop{position:absolute;inset:0;overflow:hidden;border:1px solid var(--md-border);border-radius:12px;background:var(--md-card)}
