@@ -1,0 +1,36 @@
+/* Figma 261:28594, 261:28581 and 261:28586. */
+.project-pagination {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 81px;
+  width: 100%;
+  max-width: 1080px;
+  margin: 81px auto 80px;
+  font-family: var(--md-font-sans, "PingFang SC", sans-serif);
+}
+.project-pagination__rule { width: 100%; height: .5px; overflow: hidden; }
+.project-pagination__rule img { display: block; max-width: none; }
+.project-pagination__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.project-pagination__link { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; padding: 0; border: 0; color: var(--ds-text-default, #0b0b0b); text-decoration: none; }
+.project-pagination__link--next { align-items: flex-end; text-align: right; }
+.project-pagination__label { margin: 0; font-size: 15px; font-weight: 400; line-height: 24px; color: var(--md-muted-foreground, #8f959e); }
+.project-pagination__body { display: block; position: relative; box-sizing: border-box; max-width: 100%; min-height: 24px; }
+.project-pagination__link--prev .project-pagination__body { padding-right: 22px; }
+.project-pagination__link--next .project-pagination__body { padding-left: 22px; }
+.project-pagination__title { display: block; margin: 0; font-size: 16px; font-weight: 400; line-height: 24px; overflow-wrap: anywhere; transition: transform .26s cubic-bezier(.22, 1, .36, 1); }
+.project-pagination__arrow { position: absolute; top: 50%; margin-top: -8px; opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .26s cubic-bezier(.22, 1, .36, 1); }
+.project-pagination__link--prev .project-pagination__arrow { left: 0; transform: translateX(-6px); }
+.project-pagination__link--next .project-pagination__arrow { right: 0; transform: translateX(6px); }
+.project-pagination__link:is(:hover, :focus-visible) .project-pagination__arrow { opacity: 1; transform: translateX(0); }
+.project-pagination__link--prev:is(:hover, :focus-visible) .project-pagination__title { transform: translateX(22px); }
+.project-pagination__link--next:is(:hover, :focus-visible) .project-pagination__title { transform: translateX(-22px); }
+.project-pagination__link:focus-visible { outline: 2px solid var(--portfolio-accent, #d97757); outline-offset: 6px; border-radius: 2px; }
+@media (hover: none) {
+  .project-pagination__link .project-pagination__arrow { opacity: 1; transform: none; }
+  .project-pagination__link--prev .project-pagination__title { transform: translateX(22px); }
+  .project-pagination__link--next .project-pagination__title { transform: translateX(-22px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-pagination__title, .project-pagination__arrow { transition: none; }
+}
