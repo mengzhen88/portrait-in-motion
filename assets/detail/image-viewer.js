@@ -20,7 +20,7 @@
     }).filter(item => item.src).sort((a, b) => b.width - a.width);
     return candidates[0]?.src || img.getAttribute('src');
   };
-  const makeImage = (source, alt) => {
+  const makeImage = (source, alt, preview) => {
     const img = new Image();
     img.className = 'detail-image-viewer__image';
     img.alt = alt;
@@ -28,7 +28,19 @@
     img.addEventListener('load', () => {
       img.classList.toggle('is-document', img.naturalHeight > img.naturalWidth * 1.4);
     });
-    img.src = source;
+    const thumbnail = preview?.currentSrc || preview?.getAttribute('src');
+    if (preview?.naturalWidth && preview?.naturalHeight) {
+      img.width = preview.naturalWidth;
+      img.height = preview.naturalHeight;
+      img.classList.toggle('is-document', preview.naturalHeight > preview.naturalWidth * 1.4);
+    }
+    img.src = thumbnail || source;
+    if (thumbnail && new URL(source,location.href).href !== new URL(thumbnail,location.href).href) {
+      const original = new Image();
+      original.decoding = 'async';
+      original.onload = () => { if (img.isConnected) img.src = source; };
+      original.src = source;
+    }
     return img;
   };
   const show = (trigger, img, composite) => {
@@ -39,10 +51,10 @@
     if (composite) {
       const frame = document.createElement('div');
       frame.className = 'detail-image-viewer__composite';
-      trigger.querySelectorAll('img').forEach(source => frame.append(makeImage(fullSource(source), '')));
+      trigger.querySelectorAll('img').forEach(source => frame.append(makeImage(fullSource(source), '', source)));
       media.append(frame);
     } else {
-      media.append(makeImage(trigger.dataset.zoomImage || fullSource(img), title.textContent));
+      media.append(makeImage(trigger.dataset.zoomImage || fullSource(img), title.textContent, img));
     }
     dialog.showModal();
     media.scrollTo(0, 0);
