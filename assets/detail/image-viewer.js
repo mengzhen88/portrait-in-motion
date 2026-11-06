@@ -4,7 +4,7 @@
   const dialog = document.createElement('dialog');
   dialog.className = 'detail-image-viewer';
   dialog.setAttribute('aria-labelledby', 'detail-image-title');
-  dialog.innerHTML = '<p class="detail-image-viewer__title" id="detail-image-title"></p><button class="detail-image-viewer__close" type="button" aria-label="关闭图片"><img src="assets/detail/image-close.svg" width="20" height="20" alt=""></button><div class="detail-image-viewer__media"></div>';
+  dialog.innerHTML = '<p class="detail-image-viewer__title" id="detail-image-title"></p><button class="detail-image-viewer__close" type="button" aria-label="关闭图片"><img src="assets/detail/image-close-fullscreen.svg" width="24" height="24" alt=""></button><div class="detail-image-viewer__media"></div>';
   document.body.append(dialog);
   const title = dialog.querySelector('.detail-image-viewer__title');
   const media = dialog.querySelector('.detail-image-viewer__media');
@@ -26,13 +26,13 @@
     img.alt = alt;
     img.decoding = 'async';
     img.addEventListener('load', () => {
-      img.classList.toggle('is-document', img.naturalHeight > img.naturalWidth * 1.4);
+      if (img.naturalHeight) img.style.setProperty('--detail-image-ratio', img.naturalWidth / img.naturalHeight);
     });
     const thumbnail = preview?.currentSrc || preview?.getAttribute('src');
     if (preview?.naturalWidth && preview?.naturalHeight) {
       img.width = preview.naturalWidth;
       img.height = preview.naturalHeight;
-      img.classList.toggle('is-document', preview.naturalHeight > preview.naturalWidth * 1.4);
+      img.style.setProperty('--detail-image-ratio', preview.naturalWidth / preview.naturalHeight);
     }
     img.src = thumbnail || source;
     if (thumbnail && new URL(source,location.href).href !== new URL(thumbnail,location.href).href) {
@@ -101,15 +101,12 @@
     bind(img,img);
   });
   close.addEventListener('click', () => dialog.close());
-  // A press that began in the picture must not close the dialog after a drag.
+  // Close only when both press and release are on the surrounding empty canvas.
   let backdropPress = false;
-  const outside = event => {
-    const box = dialog.getBoundingClientRect();
-    return event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
-  };
-  dialog.addEventListener('pointerdown', event => {backdropPress = event.target === dialog && outside(event);});
+  const onCanvas = event => event.target === dialog || event.target === media;
+  dialog.addEventListener('pointerdown', event => {backdropPress = onCanvas(event);});
   dialog.addEventListener('click', event => {
-    if (backdropPress && event.target === dialog && outside(event)) dialog.close();
+    if (backdropPress && onCanvas(event)) dialog.close();
     backdropPress = false;
   });
   dialog.addEventListener('close', () => {
