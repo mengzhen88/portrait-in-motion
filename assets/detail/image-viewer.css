@@ -15,3 +15,6 @@ html:has(.detail-image-viewer[open]){overflow:hidden;scrollbar-gutter:stable}
 .detail-image-viewer__composite img{display:block;position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border-radius:0}
 .detail-image-viewer__composite img+img{clip-path:inset(0 0 0 50%)}
 @media(prefers-reduced-motion:reduce){.detail-image-viewer__close{transition:none}}
+
+.detail-image-trigger.is-loading,.detail-image-trigger.is-loading img{cursor:progress}
+.detail-image-viewer__error{margin:24px;color:#fff;text-align:center}

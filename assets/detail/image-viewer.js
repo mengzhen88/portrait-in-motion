@@ -10,6 +10,8 @@
   const media = dialog.querySelector('.detail-image-viewer__media');
   const close = dialog.querySelector('.detail-image-viewer__close');
   let opener;
+  let openRequest = 0;
+  const decodedSources = new Map();
 
   // Load the original only on demand, keeping the page's small thumbnails fast.
   const fullSource = img => {
@@ -20,48 +22,77 @@
     }).filter(item => item.src).sort((a, b) => b.width - a.width);
     return candidates[0]?.src || img.getAttribute('src');
   };
-  const makeImage = (source, alt, preview) => {
+  // Start originals on hover/focus, but never display an enlarged thumbnail.
+  const prepareSource = source => {
+    const url = new URL(source, location.href).href;
+    if (!decodedSources.has(url)) {
+      const ready = new Image();
+      ready.decoding = 'async';
+      ready.src = url;
+      const pending = ready.decode().then(() => url).catch(error => {
+        decodedSources.delete(url);
+        throw error;
+      });
+      decodedSources.set(url, pending);
+    }
+    return decodedSources.get(url);
+  };
+  const makeImage = async (source, alt) => {
     const img = new Image();
     img.className = 'detail-image-viewer__image';
     img.alt = alt;
     img.decoding = 'async';
-    img.addEventListener('load', () => {
-      if (img.naturalHeight) img.style.setProperty('--detail-image-ratio', img.naturalWidth / img.naturalHeight);
-    });
-    const thumbnail = preview?.currentSrc || preview?.getAttribute('src');
-    if (preview?.naturalWidth && preview?.naturalHeight) {
-      img.width = preview.naturalWidth;
-      img.height = preview.naturalHeight;
-      img.style.setProperty('--detail-image-ratio', preview.naturalWidth / preview.naturalHeight);
-    }
-    img.src = thumbnail || source;
-    if (thumbnail && new URL(source,location.href).href !== new URL(thumbnail,location.href).href) {
-      const original = new Image();
-      original.decoding = 'async';
-      original.onload = () => { if (img.isConnected) img.src = source; };
-      original.src = source;
-    }
+    img.src = await prepareSource(source);
+    await img.decode();
+    img.width = img.naturalWidth;
+    img.height = img.naturalHeight;
+    img.style.setProperty('--detail-image-ratio', img.naturalWidth / img.naturalHeight);
     return img;
   };
-  const show = (trigger, img, composite) => {
+  const show = async (trigger, img, composite) => {
     if (dialog.open) return;
-    opener = trigger;
-    title.textContent = trigger.dataset.caption || (composite ? trigger.dataset.imageCaption : img.alt) || '查看配图';
-    media.replaceChildren();
-    if (composite) {
-      const frame = document.createElement('div');
-      frame.className = 'detail-image-viewer__composite';
-      trigger.querySelectorAll('img').forEach(source => frame.append(makeImage(fullSource(source), '', source)));
-      media.append(frame);
-    } else {
-      media.append(makeImage(trigger.dataset.zoomImage || fullSource(img), title.textContent, img));
+    const request = ++openRequest;
+    const caption = trigger.dataset.caption || (composite ? trigger.dataset.imageCaption : img.alt) || '查看配图';
+    trigger.setAttribute('aria-busy', 'true');
+    trigger.classList.add('is-loading');
+    let content;
+    try {
+      if (composite) {
+        content = document.createElement('div');
+        content.className = 'detail-image-viewer__composite';
+        const images = await Promise.all([...trigger.querySelectorAll('img')].map(source => makeImage(fullSource(source), '')));
+        content.append(...images);
+      } else {
+        content = await makeImage(trigger.dataset.zoomImage || fullSource(img), caption);
+      }
+    } catch {
+      content = document.createElement('p');
+      content.className = 'detail-image-viewer__error';
+      content.setAttribute('role', 'alert');
+      content.textContent = '图片暂时无法加载，请关闭后重试。';
+    } finally {
+      trigger.removeAttribute('aria-busy');
+      trigger.classList.remove('is-loading');
     }
+    if (request !== openRequest || dialog.open) return;
+    opener = trigger;
+    title.textContent = caption;
+    // Reveal the complete, decoded original in a single frame with stable dimensions.
+    media.replaceChildren(content);
     dialog.showModal();
     media.scrollTo(0, 0);
     close.focus({preventScroll:true});
   };
   const bind = (trigger, img, composite = false) => {
     trigger.classList.add('detail-image-trigger');
+    const prepare = () => {
+      const sources = composite
+        ? [...trigger.querySelectorAll('img')].map(fullSource)
+        : [trigger.dataset.zoomImage || fullSource(img)];
+      sources.forEach(source => { prepareSource(source).catch(() => {}); });
+    };
+    trigger.addEventListener('pointerenter', prepare);
+    trigger.addEventListener('focus', prepare);
     if (trigger.tagName !== 'BUTTON') {
       trigger.setAttribute('role', 'button');
       trigger.tabIndex = 0;
@@ -99,6 +130,9 @@
   main.querySelectorAll('img[alt]').forEach(img => {
     if (!img.alt.trim() || /\.svg(?:\?|$)/i.test(img.getAttribute('src')) || img.closest('button,a,[role="button"],.compare-stage,.video-cover,video,dialog')) return;
     bind(img,img);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !dialog.open) openRequest++;
   });
   close.addEventListener('click', () => dialog.close());
   // Close only when both press and release are on the surrounding empty canvas.
