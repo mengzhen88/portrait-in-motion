@@ -1,0 +1,30 @@
+/* Figma report covers, composed from original layers on the existing card canvas. */
+@font-face{font-family:Research Douyin;src:url('research-covers/douyin-cover.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Research Report;src:url('research-covers/report-black.woff2') format('woff2');font-weight:900;font-display:swap}
+.research-cover .research-canvas{width:708px;height:398px;transform:scale(calc(var(--art-scale,1)*704/708));font-family:var(--sans);isolation:isolate}
+.research-canvas p{margin:0}
+.research-grain{position:absolute;left:-3.77px;top:-.37px;display:flex;opacity:.6;pointer-events:none}
+.research-grain img{width:455.245px;height:398.578px;max-width:none;flex-shrink:0}
+.pontus-research-cover{background:#fcf5ef}
+.pontus-fields{position:absolute;inset:0 0 0 -62.72%;background:linear-gradient(90deg,rgba(255,253,252,.98) 31.775%,rgba(252,245,239,.6) 59.065%,rgba(252,245,239,0) 83.626%),radial-gradient(ellipse 77% 77% at 73.84% 76.92%,rgba(231,200,186,.96),transparent),radial-gradient(ellipse 59% 81% at 100% 72.58%,rgba(241,215,206,.85),transparent),radial-gradient(ellipse 48% 42% at 100% 26.67%,rgba(252,240,234,.95),transparent)}
+.pontus-report{position:absolute;left:65px;top:75.74px;color:#382117}
+.pontus-badge{display:flex;align-items:center;justify-content:center;width:67px;height:29px;border-radius:15px;background:#ed7d57;color:white;font:700 14px/normal Inter,Arial,sans-serif}
+.pontus-cover-title{margin-top:26px;font:900 35px/1.3 "Research Report","Noto Sans SC","PingFang SC",sans-serif}
+.pontus-report .pontus-interview{margin-top:64px;color:#7a614f;font:200 16px/normal Inter,Arial,sans-serif}
+.pontus-person{position:absolute;left:384px;top:60.73px;width:265px;height:auto;max-width:none}
+.bp-research-cover{background:#f8fffb;font-family:Research Douyin,var(--sans)!important;font-weight:700}
+.bp-panel{position:absolute;left:44px;top:53.08px;width:620px;height:181.724px}
+.bp-panel img{position:absolute;left:0;top:0;max-width:none}
+.bp-about,.bp-about-cn,.bp-date,.bp-partner,.bp-cover-title{position:absolute;white-space:nowrap}
+.bp-research-cover .bp-about{left:68.05px;top:65.1px;font:800 12.828px/normal "Home Puhuiti",var(--sans);letter-spacing:.6414px;color:#0dbf63}
+.bp-about-cn{left:68.05px;top:92.1px;font-size:19.241px;line-height:normal;color:#0dbf63}
+.bp-date{left:597.72px;top:65.11px;color:#0dbf63;font-size:11.224px;line-height:normal}
+.bp-partner{left:394.35px;top:84.35px;width:245.595px;height:36.612px;display:flex;align-items:center;justify-content:center;background:#0dbf63;border-radius:5.345px;color:#fbfcfc;font-size:18.091px;line-height:normal}
+.bp-avatar{position:absolute;top:131.02px;width:41.914px;height:41.949px;max-width:none;object-fit:cover}
+.bp-avatar-1{left:57.91px}.bp-avatar-2{left:205.39px;width:42.268px}.bp-avatar-3{left:247.66px;width:58.48px}.bp-avatar-4{left:156.26px}.bp-avatar-5{left:107.05px}
+.bp-research-cover .bp-cover-title{left:62.71px;top:183px;font-size:48.103px;line-height:1.273;letter-spacing:3.8483px;color:#15d270}
+.bp-credits-bg{position:absolute;left:44px;top:286.78px;width:620px;height:57.545px;border:.802px solid white;border-radius:5.345px;background:linear-gradient(99.067deg,rgba(134,239,127,.02) 6.3655%,rgba(134,239,127,.2) 79.367%);backdrop-filter:blur(.855px)}
+.bp-credits{position:absolute;left:62.71px;top:298.18px;display:flex;align-items:center;gap:27.793px;color:#21252c;font-size:8.552px;line-height:normal;white-space:nowrap}
+.bp-team{width:265.732px;display:flex;flex-direction:column;gap:7.216px;white-space:normal}
+.bp-names{display:flex;flex-wrap:wrap;gap:5.345px 8.552px;font-size:5.345px;color:#4e5969}
+.bp-credits>img{max-width:none;flex-shrink:0}

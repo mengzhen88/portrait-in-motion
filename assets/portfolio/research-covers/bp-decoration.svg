@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="620" height="181.724" viewBox="0 0 620 181.724" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1912054226">
+<mask id="mask0_0_5" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="620" height="180">
+<path id="Rectangle 34625271" d="M0 26.7242C0 11.9648 11.9648 0 26.7241 0H593.276C608.035 0 620 11.9648 620 26.7241V129.315C620 144.074 608.035 156.039 593.276 156.039H581.25H578.468C574.265 156.039 570.452 158.502 568.724 162.334L561.222 178.968C560.977 179.513 560.158 179.305 560.202 178.709L561.162 165.7C561.547 160.483 557.418 156.039 552.188 156.039H542.5H523.125H503.75H465H310H26.7241C11.9648 156.039 0 144.074 0 129.315V26.7242Z" fill="#00752B"/>
+</mask>
+<g mask="url(#mask0_0_5)">
+<ellipse id="Ellipse 1096" opacity="0.8" cx="187.5" cy="129.921" rx="191.5" ry="161" fill="url(#paint0_radial_0_5)"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_5" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(187.5 129.921) scale(191.5 161)">
+<stop stop-color="#7CEC58"/>
+<stop offset="1" stop-color="#7CEC58" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

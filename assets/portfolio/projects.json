@@ -370,7 +370,8 @@
     "related": [
       "project-pontus-framework.html",
       "查看 Pontus 框架与首页优化方案"
-    ]
+    ],
+    "homeCoverTemplate": "assets/portfolio/research-covers/pontus-research.html"
   },
   {
     "id": "bp-research",
@@ -435,7 +436,8 @@
       ]
     ],
     "resultNote": "原复盘记录重点需求存在转化，但部分问题总量仍为待补充项；本页不将缺失数据写成已验证的业务结果。",
-    "reflection": "画像不仅描述用户是谁，更应帮助团队判断用户在什么情况下、为什么需要某项能力。后续可继续丰富画像内容，并持续跟踪研究发现的实际采用情况。"
+    "reflection": "画像不仅描述用户是谁，更应帮助团队判断用户在什么情况下、为什么需要某项能力。后续可继续丰富画像内容，并持续跟踪研究发现的实际采用情况。",
+    "homeCoverTemplate": "assets/portfolio/research-covers/bp-research.html"
   },
   {
     "id": "emr-onboarding",

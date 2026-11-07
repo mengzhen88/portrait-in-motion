@@ -34,7 +34,10 @@ def image(path, alt, eager=False, card_size=False):
 
 
 def card(project):
-    return f'''<article class="project-card" data-categories="{project['category']}"><a href="project-{project['id']}.html" aria-label="查看{esc(project['title'])}案例详情"><div class="project-art portfolio-cover" data-case-theme="{project['theme']}">{image(asset(project, project['cover']), project['title'], card_size=True)}</div><div class="project-copy"><h2>{esc(project['title'])}</h2><p>{esc(project['summary'])}</p></div></a></article>'''
+    template = project.get('homeCoverTemplate')
+    cover = (ROOT / template).read_text().strip() if template else image(asset(project, project['cover']), project['title'], card_size=True)
+    cover_class = 'research-cover' if template else 'portfolio-cover'
+    return f'''<article class="project-card" data-categories="{project['category']}"><a href="project-{project['id']}.html" aria-label="查看{esc(project['title'])}案例详情"><div class="project-art {cover_class}" data-case-theme="{project['theme']}">{cover}</div><div class="project-copy"><h2>{esc(project['title'])}</h2><p>{esc(project['summary'])}</p></div></a></article>'''
 
 
 def build_case(project):
@@ -73,5 +76,7 @@ new_cards = '<!-- document-projects:start -->' + ''.join(card(p) for p in PROJEC
 html = html.replace('</div><p class="empty-state"', new_cards + '</div><p class="empty-state"', 1)
 if 'assets/portfolio/home-cards.css' not in html:
     html = html.replace('</head>', f'<link rel="stylesheet" href="assets/portfolio/home-cards.css?v={VERSION}"></head>', 1)
+if any(p.get('homeCoverTemplate') for p in PROJECTS) and 'assets/portfolio/research-covers.css' not in html:
+    html = html.replace('</head>', '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261107"></head>', 1)
 home.write_text(html)
 print(f'Built {len(PROJECTS)} project pages and filled homepage categories.')
