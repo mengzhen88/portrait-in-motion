@@ -1,8 +1,16 @@
 /* New projects reuse the existing two-column portfolio card structure. */
 .portfolio-cover{padding:24px;background:var(--case-tint,#f3f3fa);display:flex;align-items:center;justify-content:center}
-.portfolio-cover>img{display:block;width:100%;height:100%;object-fit:contain;border-radius:8px}
+.portfolio-cover>img,.portfolio-cover>.cover-motion>img{display:block;width:100%;height:100%;object-fit:contain;border-radius:8px}
 .portfolio-cover[data-case-theme="violet"]{--case-tint:#f3f2ff}
 .portfolio-cover[data-case-theme="blue"]{--case-tint:#eef5ff}
 .portfolio-cover[data-case-theme="green"]{--case-tint:#f0f7f4}
 .portfolio-cover[data-case-theme="peach"]{--case-tint:#fff6ef}
 @media(max-width:760px){.portfolio-cover{padding:20px}}
+
+/* Scale artwork within the fixed, clipped cover rather than scaling the card. */
+.cover-motion{position:absolute;inset:0;padding:inherit;display:flex;align-items:center;justify-content:center;transform:scale(1);transform-origin:center;transition:transform 520ms cubic-bezier(.22,1,.36,1)}
+.project-card>a:focus-visible .cover-motion{transform:scale(1.1)}
+@media(hover:hover) and (pointer:fine){.project-art:hover>.cover-motion{transform:scale(1.1)}}
+/* Anyclaw scales only its screen, preserving its existing perspective animation. */
+.project-card--anyclaw .cover-motion{transform:none!important}
+@media(prefers-reduced-motion:reduce){.cover-motion{transition:none}}
