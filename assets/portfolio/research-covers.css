@@ -75,4 +75,28 @@
 
 /* EMR homepage: match the media's 1440:1000 ratio so no white letterbox is visible. */
 .project-art.research-cover:has([data-cover-gif]){border-radius:16px}
-.project-art [data-cover-gif]{left:123.6px;width:460.8px;background:transparent}
+.project-art .emr-media-slot[data-cover-gif]{left:123.6px;width:460.8px;background:transparent}
+
+/* Aily Profile background, Figma 269:55096 (708 x 397.92). */
+.research-cover .aily-profile-cover{height:397.92px;background:#fcf5ef}
+.aily-profile-fields{position:absolute;inset:0 0 0 -62.7219%}
+.aily-profile-field{position:absolute;inset:0}
+.aily-profile-field--bottom{background:radial-gradient(ellipse 76.9259% 76.9231% at 73.8434% 76.9231%,rgba(231,200,186,.96),rgba(231,200,186,0))}
+.aily-profile-field--right{background:radial-gradient(ellipse 58.8222% 80.6433% at 100% 72.5809%,rgba(241,215,206,.85),rgba(241,215,206,0))}
+.aily-profile-field--top{background:radial-gradient(ellipse 47.6187% 41.6667% at 100% 26.6667%,rgba(252,240,234,.95),rgba(252,240,234,0))}
+.aily-profile-field--fade{background:linear-gradient(90deg,rgba(252,245,239,.98),rgba(252,245,239,.72) 43%,rgba(252,245,239,0) 76%)}
+.research-grain.aily-profile-grain{left:-3.2684px;top:.3611px}
+
+/* Transparent Profile GIF sits over the original Figma background. */
+.project-card--aily-profile .project-art.research-cover{border-radius:25.173px}
+.aily-profile-media{position:absolute;inset:0;background:transparent}
+.cover-gif-slot>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;pointer-events:none}
+.cover-gif-animation{opacity:0}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .project-art:hover .cover-gif-animation{opacity:1}
+ .project-art:hover .cover-gif-poster{opacity:0}
+}
+@media(prefers-reduced-motion:no-preference){
+ .project-card>a:focus-visible .cover-gif-animation{opacity:1}
+ .project-card>a:focus-visible .cover-gif-poster{opacity:0}
+}

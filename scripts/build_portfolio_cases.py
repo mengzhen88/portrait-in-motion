@@ -57,8 +57,8 @@ def build_case(project):
     if detail_template:
         detail_art = (ROOT / detail_template).read_text().strip().replace('loading="lazy" decoding="async"', 'fetchpriority="high" decoding="async"')
         hero = '<figure class="case-hero research-cover emr-detail-cover" role="button" tabindex="0" aria-label="播放 EMR 改版动图，悬停可自动播放" aria-pressed="false">' + detail_art + '</figure>'
-        cover_assets = '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261108-emr-no-matte">'
-        cover_script = '<script src="assets/portfolio/cover-media.js?v=20261108-emr-instant-gif" defer></script>'
+        cover_assets = '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261108-aily-profile">'
+        cover_script = '<script src="assets/portfolio/cover-media.js?v=20261108-aily-profile" defer></script>'
     html = f'''<!doctype html>
 <html lang="zh-CN" data-design-system="miaoda"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{esc(project['summary'])}"><title>{title} · 邵梦贞</title><link rel="icon" type="image/png" sizes="32x32" href="assets/identity/favicon-32.png?v=20261105-headroom"><link rel="icon" type="image/png" sizes="64x64" href="assets/identity/favicon-64.png?v=20261105-headroom"><link rel="shortcut icon" href="favicon.ico?v=20261105-headroom"><link rel="apple-touch-icon" sizes="180x180" href="assets/identity/apple-touch-icon.png?v=20261105-headroom"><link rel="stylesheet" href="assets/design-system/tokens.css?v=20261106-violet"><link rel="stylesheet" href="assets/portfolio/cases.css?v=20261106-violet"><link rel="stylesheet" href="assets/detail/navigation.css?v=20261105-glass-52-type15"><link rel="stylesheet" href="assets/detail/reading-nav.css?v=20261106-violet">{STYLESHEET}<link rel="stylesheet" href="assets/detail/image-viewer.css?v=20261107-decoded-original">{cover_assets}</head>
 <body data-case-theme="{project['theme']}"><header class="detail-nav" aria-label="项目导航"><a class="back-link" href="{category_url}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-title">{esc(project['shortTitle'])}</span></a><div class="designer"><span>邵梦贞</span><span class="designer-role">产品设计师·7年设计经验</span></div></header>
@@ -86,8 +86,8 @@ html = html.replace('</div><p class="empty-state"', new_cards + '</div><p class=
 if 'assets/portfolio/home-cards.css' not in html:
     html = html.replace('</head>', f'<link rel="stylesheet" href="assets/portfolio/home-cards.css?v=20261108-hover-zoom"></head>', 1)
 if any(p.get('homeCoverTemplate') for p in PROJECTS) and 'assets/portfolio/research-covers.css' not in html:
-    html = html.replace('</head>', '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261108-emr-no-matte"></head>', 1)
+    html = html.replace('</head>', '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261108-aily-profile"></head>', 1)
 if any(p.get('hoverCover') for p in PROJECTS) and 'assets/portfolio/cover-media.js' not in html:
-    html = html.replace('</body>', '<script src="assets/portfolio/cover-media.js?v=20261108-emr-instant-gif" defer></script></body>', 1)
+    html = html.replace('</body>', '<script src="assets/portfolio/cover-media.js?v=20261108-aily-profile" defer></script></body>', 1)
 home.write_text(html)
 print(f'Built {len(PROJECTS)} project pages and filled homepage categories.')

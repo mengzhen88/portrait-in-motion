@@ -9,7 +9,7 @@
   document.querySelectorAll('[data-cover-gif]').forEach(slot => {
     const cover = slot.closest('.project-art');
     const link = cover.closest('a');
-    const gif = slot.querySelector('.emr-media-gif');
+    const gif = slot.querySelector('.emr-media-gif,.cover-gif-animation');
     const source = gif.getAttribute('src');
     let pendingBlob;
     let preparedBlob;
