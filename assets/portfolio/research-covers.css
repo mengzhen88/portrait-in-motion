@@ -72,3 +72,7 @@
  .project-card>a:focus-visible .emr-media-gif{opacity:1}
  .project-card>a:focus-visible [data-cover-gif]>.emr-media-poster{opacity:0}
 }
+
+/* EMR homepage: match the media's 1440:1000 ratio so no white letterbox is visible. */
+.project-art.research-cover:has([data-cover-gif]){border-radius:16px}
+.project-art [data-cover-gif]{left:123.6px;width:460.8px;background:transparent}
