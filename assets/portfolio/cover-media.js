@@ -1,9 +1,43 @@
-/* Original GIF content, encoded as a controllable loop. No media fetch until interaction. */
+/* Native GIF playback for homepage covers; controllable video for detail heroes. */
 (() => {
   document.querySelectorAll('.emr-detail-cover').forEach(cover => {
     const fit = () => cover.style.setProperty('--art-scale', cover.clientWidth / 704);
     new ResizeObserver(fit).observe(cover);
     fit();
+  });
+  // CSS controls visibility; restarting a real GIF avoids browser video-autoplay restrictions.
+  document.querySelectorAll('[data-cover-gif]').forEach(slot => {
+    const cover = slot.closest('.project-art');
+    const link = cover.closest('a');
+    const gif = slot.querySelector('.emr-media-gif');
+    const source = gif.getAttribute('src');
+    let pendingBlob;
+    let objectUrl;
+    let inside = false;
+    let sequence = 0;
+    const prepare = () => pendingBlob ||= fetch(source, { cache: 'force-cache' })
+      .then(response => { if (!response.ok) throw new Error('GIF unavailable'); return response.blob(); });
+    const restart = () => {
+      if (inside || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      inside = true;
+      const request = ++sequence;
+      prepare().then(blob => {
+        if (!inside || request !== sequence) return;
+        const previous = objectUrl;
+        objectUrl = URL.createObjectURL(blob);
+        gif.src = objectUrl;
+        if (previous) URL.revokeObjectURL(previous);
+      }).catch(() => { pendingBlob = null; }); // The normal GIF URL remains a working fallback.
+    };
+    const leave = () => { inside = false; ++sequence; };
+    cover.addEventListener('mouseenter', restart);
+    cover.addEventListener('mouseleave', leave);
+    link.addEventListener('focus', () => { if (link.matches(':focus-visible')) restart(); });
+    link.addEventListener('blur', leave);
+    const preload = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { prepare().catch(() => { pendingBlob = null; }); preload.disconnect(); }
+    }, { rootMargin: '300px' });
+    preload.observe(cover);
   });
   const slots = document.querySelectorAll('[data-cover-video]');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');

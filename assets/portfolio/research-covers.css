@@ -61,3 +61,14 @@
 .emr-detail-cover img{max-height:none;border-radius:0}
 .emr-detail-cover .research-grain>img{width:455.245px;height:398.578px;max-width:none}
 .emr-detail-cover:focus-visible{outline:2px solid var(--portfolio-accent,#4e22ff);outline-offset:4px}
+
+/* Homepage uses the original animated image; CSS hover does not depend on video autoplay. */
+.emr-media-slot>.emr-media-gif{opacity:0}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .project-art:hover .emr-media-gif{opacity:1}
+ .project-art:hover [data-cover-gif]>.emr-media-poster{opacity:0}
+}
+@media(prefers-reduced-motion:no-preference){
+ .project-card>a:focus-visible .emr-media-gif{opacity:1}
+ .project-card>a:focus-visible [data-cover-gif]>.emr-media-poster{opacity:0}
+}
