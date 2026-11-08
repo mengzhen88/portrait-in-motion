@@ -301,7 +301,8 @@
     "related": [
       "project-2.html",
       "查看 ByteIO 埋点体验优化方案"
-    ]
+    ],
+    "homeCoverTemplate": "assets/portfolio/research-covers/byteio-research.html"
   },
   {
     "id": "pontus-research",

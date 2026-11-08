@@ -77,6 +77,6 @@ html = html.replace('</div><p class="empty-state"', new_cards + '</div><p class=
 if 'assets/portfolio/home-cards.css' not in html:
     html = html.replace('</head>', f'<link rel="stylesheet" href="assets/portfolio/home-cards.css?v=20261108-hover-zoom"></head>', 1)
 if any(p.get('homeCoverTemplate') for p in PROJECTS) and 'assets/portfolio/research-covers.css' not in html:
-    html = html.replace('</head>', '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261107"></head>', 1)
+    html = html.replace('</head>', '<link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261108-byteio"></head>', 1)
 home.write_text(html)
 print(f'Built {len(PROJECTS)} project pages and filled homepage categories.')
