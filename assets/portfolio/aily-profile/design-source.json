@@ -1,0 +1,53 @@
+{
+  "figma_file": "E2WFxB4f3JhkQfU8306z8x",
+  "page_node": "195:8847",
+  "assets": [
+    {
+      "file": "issue-types.svg",
+      "node": "218:17763"
+    },
+    {
+      "file": "issue-concepts.svg",
+      "node": "212:15362"
+    },
+    {
+      "file": "issue-framework.svg",
+      "node": "212:15807"
+    },
+    {
+      "file": "issue-expansion.svg",
+      "node": "213:17699"
+    },
+    {
+      "file": "detail-type-cards.svg",
+      "node": "225:26398"
+    },
+    {
+      "file": "detail-type-label.svg",
+      "node": "225:26467"
+    },
+    {
+      "file": "detail-naming.svg",
+      "node": "225:26411"
+    },
+    {
+      "file": "detail-information.svg",
+      "node": "322:55027"
+    },
+    {
+      "file": "detail-hierarchy.svg",
+      "node": "322:55103"
+    },
+    {
+      "file": "detail-structure.svg",
+      "node": "225:26425"
+    }
+  ],
+  "unfilled_nodes": [
+    "322:56941",
+    "322:56944",
+    "322:56946",
+    "322:56949"
+  ],
+  "note": "Native HTML text and responsive layout; Figma vector illustration exports with original embedded images. Avatar images resized for delivery without changing artwork. Hero uses user-confirmed Lydia GIF. Empty media and reflection nodes explicitly marked pending."
+}
