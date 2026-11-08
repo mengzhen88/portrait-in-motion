@@ -12,22 +12,26 @@
     const gif = slot.querySelector('.emr-media-gif');
     const source = gif.getAttribute('src');
     let pendingBlob;
+    let preparedBlob;
     let objectUrl;
     let inside = false;
     let sequence = 0;
     const prepare = () => pendingBlob ||= fetch(source, { cache: 'force-cache' })
-      .then(response => { if (!response.ok) throw new Error('GIF unavailable'); return response.blob(); });
+      .then(response => { if (!response.ok) throw new Error('GIF unavailable'); return response.blob(); })
+      .then(blob => (preparedBlob = blob));
     const restart = () => {
       if (inside || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       inside = true;
       const request = ++sequence;
-      prepare().then(blob => {
+      const show = blob => {
         if (!inside || request !== sequence) return;
         const previous = objectUrl;
         objectUrl = URL.createObjectURL(blob);
         gif.src = objectUrl;
         if (previous) URL.revokeObjectURL(previous);
-      }).catch(() => { pendingBlob = null; }); // The normal GIF URL remains a working fallback.
+      };
+      if (preparedBlob) show(preparedBlob);
+      else prepare().then(show).catch(() => { pendingBlob = null; }); // Keep the normal GIF as fallback.
     };
     const leave = () => { inside = false; ++sequence; };
     cover.addEventListener('mouseenter', restart);
