@@ -517,7 +517,8 @@
     "resultNote": "原复盘记录项目受排期影响，后续上线效果有待验证。因此本页不将资源开通率、满意度或收入提升描述为已达成结果。",
     "reflection": "商业化设计应从客户的真实使用局限出发。清楚解释能力、帮助完成配置并衔接下一步，比单独增加一个引导入口更接近客户的任务目标。",
     "homeCoverTemplate": "assets/portfolio/research-covers/emr-onboarding.html",
-    "hoverCover": true
+    "hoverCover": true,
+    "detailCoverTemplate": "assets/portfolio/research-covers/emr-onboarding.html"
   },
   {
     "id": "dataleap-cloud",
