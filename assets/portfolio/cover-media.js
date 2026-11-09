@@ -1,5 +1,44 @@
 /* Native GIF playback for homepage covers; controllable video for detail heroes. */
 (() => {
+  // Round the moving product panel, preserving the GIF's transparent canvas and annotations.
+  const roundProfilePanel = (slot, gif) => {
+    if (!slot.classList.contains('aily-profile-media')) return null;
+    const poster = slot.querySelector('.cover-gif-poster');
+    const positions = [[0,360],[3360,359.5],[3400,357.5],[3440,354],[3480,347.5],[3520,336.5],[3560,321.5],[3600,300.5],[3640,276],[3680,257],[3720,243],[3760,233.5],[3800,227.5],[3840,224],[3880,222.5]];
+    const masks = new Map();
+    let frame = 0;
+    let started = 0;
+    const apply = (image, left) => {
+      const width = image.getBoundingClientRect().width;
+      if (!width) return;
+      const radius = +(6.8 * 1920 / width).toFixed(3);
+      const key = `${left}:${radius}`;
+      if (!masks.has(key)) {
+        const x = left, y = 140, right = x + 1200, bottom = 940, r = radius;
+        const square = `M${x} ${y}H${right}V${bottom}H${x}Z`;
+        const rounded = `M${x+r} ${y}H${right-r}A${r} ${r} 0 0 1 ${right} ${y+r}V${bottom-r}A${r} ${r} 0 0 1 ${right-r} ${bottom}H${x+r}A${r} ${r} 0 0 1 ${x} ${bottom-r}V${y+r}A${r} ${r} 0 0 1 ${x+r} ${y}Z`;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><path fill="white" fill-rule="evenodd" d="M0 0H1920V1080H0Z ${square} ${rounded}"/></svg>`;
+        masks.set(key, `url("data:image/svg+xml,${encodeURIComponent(svg)}")`);
+      }
+      image.style.setProperty('--profile-interface-mask', masks.get(key));
+    };
+    const stop = () => { cancelAnimationFrame(frame); frame = 0; };
+    const tick = () => {
+      const elapsed = (performance.now() - started) % 6000;
+      let left = 360;
+      for (const [time, x] of positions) { if (elapsed < time) break; left = x; }
+      apply(gif, left);
+      frame = requestAnimationFrame(tick);
+    };
+    const start = () => { stop(); started = performance.now(); tick(); };
+    const fit = () => { apply(poster, 360); if (!frame) apply(gif, 360); };
+    const observer = new ResizeObserver(fit);
+    observer.observe(slot);
+    const cover = slot.closest('.project-art');
+    if (cover) observer.observe(cover);
+    fit();
+    return {start, stop};
+  };
   document.querySelectorAll('.emr-detail-cover').forEach(cover => {
     const fit = () => cover.style.setProperty('--art-scale', cover.clientWidth / 704);
     new ResizeObserver(fit).observe(cover);
@@ -10,12 +49,14 @@
     const cover = slot.closest('.project-art');
     const link = cover.closest('a');
     const gif = slot.querySelector('.emr-media-gif,.cover-gif-animation');
+    const rounding = roundProfilePanel(slot, gif);
     const source = gif.getAttribute('src');
     let pendingBlob;
     let preparedBlob;
     let objectUrl;
     let inside = false;
     let sequence = 0;
+    gif.addEventListener('load', () => { if (inside) rounding?.start(); });
     const prepare = () => pendingBlob ||= fetch(source, { cache: 'force-cache' })
       .then(response => { if (!response.ok) throw new Error('GIF unavailable'); return response.blob(); })
       .then(blob => (preparedBlob = blob));
@@ -33,7 +74,7 @@
       if (preparedBlob) show(preparedBlob);
       else prepare().then(show).catch(() => { pendingBlob = null; }); // Keep the normal GIF as fallback.
     };
-    const leave = () => { inside = false; ++sequence; };
+    const leave = () => { inside = false; ++sequence; rounding?.stop(); };
     cover.addEventListener('mouseenter', restart);
     cover.addEventListener('mouseleave', leave);
     link.addEventListener('focus', () => { if (link.matches(':focus-visible')) restart(); });
