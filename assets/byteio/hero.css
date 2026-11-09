@@ -1,0 +1,8 @@
+/* ByteIO artwork from Figma 5006:14972, shared by the cover and detail hero. */
+.byteio-collage{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#fff;isolation:isolate}
+.byteio-collage:before{content:'';position:absolute;inset:0 0 0 -6.3%;background:linear-gradient(90deg,rgba(243,243,250,.98),rgba(243,243,250,.72) 43%,transparent 76%),radial-gradient(ellipse 47.62% 41.67% at 100% 26.67%,rgba(232,233,252,.95),transparent),radial-gradient(ellipse 58.82% 80.64% at 100% 72.58%,rgba(186,200,240,.85),transparent),radial-gradient(ellipse 76.92% 76.92% at 73.84% 76.92%,rgba(168,188,235,.96),transparent)}
+.byteio-collage:after{content:'';position:absolute;left:-.5324%;top:-.0938%;width:100.6804%;height:100.0823%;background:url('hero-grain.svg') left top/63.866% 100% repeat-x;opacity:.4;pointer-events:none}
+.byteio-collage .byteio-collage__screens{position:absolute;z-index:1;left:-10.462963%;top:-.164609%;width:116.759259%;height:116.707819%;max-width:none;object-fit:cover}
+.project-art.byteio-cover{padding:0;border:0;border-radius:24px}
+.byteio-cover .cover-motion{padding:0}
+.figure-open.byteio-hero-trigger{border-radius:20px;border:0}
