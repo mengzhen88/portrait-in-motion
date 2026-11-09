@@ -13,6 +13,9 @@
 .profile-section{margin-top:81px;scroll-margin-top:84px}
 .profile-section>h2{font-size:20px;line-height:28px;font-weight:400;color:#000;margin-bottom:24px}
 .profile-section>p{font-size:15px;line-height:24px;color:var(--profile-copy)}
+.profile-challenge>p{font:400 15px/24px var(--md-font-sans);color:var(--md-foreground,#1f2329)}
+.profile-challenge__strategy{margin-top:24px;padding:12px;border-radius:12px;background:linear-gradient(99.074898deg,#fff2e6 6.7212%,#fff9f4 123.44%)}
+.profile-challenge__strategy p{font:400 15px/24px var(--md-font-sans);color:var(--md-foreground,#1f2329)}
 .profile-issues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px}
 .profile-issue{min-width:0;display:flex;flex-direction:column;padding:24px 24px 12px;background:var(--profile-subtle);border-radius:16px}
 .profile-issue h3{font-size:15px;line-height:24px;font-weight:500;margin-bottom:10px}
