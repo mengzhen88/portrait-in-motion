@@ -76,7 +76,7 @@
 .profile-results__copy>p,.profile-results__copy h3{font:inherit;color:var(--md-subtle-foreground,#646a73)}
 .profile-results__copy ul{display:flex;flex-direction:column;gap:6px;margin:0;padding-left:22.5px;list-style:disc;color:var(--md-foreground,#1f2329)}
 .profile-results__copy li{font:inherit;padding:0}
-.profile-results__art{display:block;position:relative;width:100%;aspect-ratio:1080/607.5;padding:0;overflow:hidden;border:.5px solid var(--md-border,#dee0e3);border-radius:16px;background:#f8f9fa;cursor:zoom-in}
+.profile-results__art{display:block;position:relative;width:100%;aspect-ratio:1080/607.5;padding:0;overflow:hidden;border:.5px solid #dee0e3;border-radius:16px;background:#f8f9fa;cursor:zoom-in}
 .profile-results__art img{position:absolute;left:-8.37963%;top:-8.41646%;width:111.66667%;height:111.66667%;max-width:none;object-fit:cover}
 @media(max-width:760px){.profile-results__stats{gap:24px}}
 @media(max-width:520px){.profile-results__stats{flex-wrap:wrap;column-gap:24px;row-gap:0}.profile-results__stat{flex:0 0 calc(50% - 12px)}.profile-results__divider{display:none}}
