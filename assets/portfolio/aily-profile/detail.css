@@ -34,6 +34,9 @@
 .profile-details{display:flex;flex-direction:column;gap:56px}
 .profile-detail h3{display:flex;align-items:baseline;gap:8px;padding-top:4px;font-size:18px;line-height:28px;font-weight:500;margin-bottom:24px}
 .profile-detail h3 span{font-size:20px;flex:none}
+@font-face{font-family:"Profile Detail Numbers";src:url("../../fonts/alibaba-puhuiti-medium-numbers.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+.profile-detail--naming h3{align-items:center}
+.profile-detail--naming h3 span{font-family:"Profile Detail Numbers",var(--md-font-sans);font-weight:500}
 .profile-detail__description{font-size:15px;line-height:24px;font-weight:300;color:var(--profile-copy);margin-top:-12px;margin-bottom:24px}
 .profile-figure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .profile-figure{min-width:0}
