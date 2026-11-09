@@ -13,6 +13,7 @@
 .pontus-facts{display:grid;grid-template-columns:60px 75px 125px minmax(0,1fr);column-gap:64px;row-gap:24px;margin-top:32px;padding:20px 0;border-block:.5px solid var(--md-border)}
 .pontus-facts dt{font-size:12px;line-height:16px;color:var(--md-muted-foreground);margin-bottom:6px}
 .pontus-facts dd{font-size:15px;line-height:24px}
+.pontus-facts>div:not(:last-child) dd{white-space:nowrap}
 .pontus-section{margin-top:80px;scroll-margin-top:84px}
 .pontus-section>h2{font-size:20px;line-height:28px;font-weight:400;color:#000;margin-bottom:24px}
 .pontus-section p,.pontus-section li{font-size:15px;line-height:24px}
