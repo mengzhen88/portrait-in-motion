@@ -33,7 +33,7 @@ img{display:block;max-width:100%}
 .guidance-example h3{display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;line-height:24px;font-weight:700;color:#3958ff}
 .guidance-example p{color:var(--md-muted-foreground)}
 .guidance-preview{width:312px;max-width:100%;flex:none}
-.guidance-example:first-child .guidance-preview{width:340px}
+.guidance-example:first-child .guidance-preview{width:340px;margin-top:-8px}
 .guidance-preview img{width:100%;height:auto}
 .swimlane-board{position:relative;aspect-ratio:1080/600;background:var(--md-subtle,#f8f9fa);border-radius:16px;overflow:hidden}
 .board-image{position:absolute;display:block;border:0;padding:0;background:none;cursor:zoom-in;overflow:hidden}
