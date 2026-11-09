@@ -1,0 +1,28 @@
+.pontus-research-intro .case-kicker { color:#8f959e; font-size:16px; line-height:24px; letter-spacing:.96px }
+.pontus-research-intro h1 { margin-top:20px; font-weight:500; letter-spacing:0 }
+.pontus-research-hero { position:relative; isolation:isolate; aspect-ratio:1080 / 607; margin-top:32px; border-radius:38.4px; overflow:hidden; background:radial-gradient(ellipse 75% 75% at 55% 77%,rgba(231,200,186,.96),transparent),radial-gradient(ellipse 80% 75% at 100% 73%,rgba(241,215,206,.85),transparent),#fcf5ef }
+.pontus-research-hero::before { content:""; position:absolute; inset:0; background:url('hero-grain.svg') repeat-x; background-size:64.3% 100%; opacity:.6; pointer-events:none }
+.pontus-hero-art { position:absolute; overflow:hidden; background:#fff; border-radius:16px; box-shadow:0 6px 18px rgba(31,35,41,.08); padding:1.1%; }
+.pontus-hero-art img { width:100%; max-width:none; }
+.pontus-hero-art--back { width:60.1%; left:10.1%; top:34.8%; }
+.pontus-hero-art--back img { aspect-ratio:741 / 393; object-fit:cover; object-position:bottom; }
+.pontus-hero-art--front { width:52.84%; height:82.54%; left:37.13%; top:11%; }
+.pontus-hero-art--front img { height:auto; }
+.pontus-research-hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:23%; background:linear-gradient(transparent,rgba(244,225,215,.88)); pointer-events:none }
+.pontus-research-facts { display:flex; flex-wrap:wrap; gap:24px 64px; margin-top:32px; padding:20px 0; border-block:.5px solid var(--md-border,#dee0e3); }
+.pontus-research-facts dt { color:#8f959e; font-size:12px; line-height:16px; margin-bottom:6px }
+.pontus-research-facts dd { font-size:15px; line-height:24px }
+.pontus-research-body .case-block { margin-top:81px }
+.pontus-research-body .case-block>h2 { margin-bottom:24px; font-size:20px; line-height:28px; font-weight:400; color:#000 }
+.pontus-research-body .case-block p,.pontus-research-body .case-block li { font-size:15px; line-height:24px; color:#1f2329 }
+.pontus-research-body ul { padding-left:22.5px; margin:0 }
+.pontus-report-placeholder { height:600px; border-radius:16px; background:#f8f9fa; display:grid; place-items:center; color:#8f959e; }
+.pontus-outcome-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px }
+.pontus-outcome-grid p { min-height:48px; margin-bottom:12px }
+.pontus-outcome-plate { height:224px; border-radius:16px; background:#f8f9fa; display:grid; place-items:center; overflow:hidden }
+.pontus-outcome-plate button { width:min(357px,calc(100% - 48px)); height:168px; padding:0; border:0; border-radius:12px; overflow:hidden; background:transparent; cursor:zoom-in }
+.pontus-outcome-plate img { display:block; width:100%; height:100%; object-fit:cover }
+.pontus-reflection { margin-top:24px }
+.pontus-reflection h3 { margin:0 0 12px; color:#646a73; font-size:15px; line-height:24px; font-weight:400 }
+.pontus-reflection--positive li { line-height:30px }
+@media(max-width:760px) { .pontus-research-hero { border-radius:20px } .pontus-research-body .case-block { margin-top:64px } .pontus-outcome-grid { grid-template-columns:1fr; gap:24px } .pontus-outcome-grid p { min-height:0 } .pontus-report-placeholder { height: min(600px,70vh) } }
