@@ -1,0 +1,51 @@
+@font-face{font-family:SwimlaneMono;src:url('../../fonts/roboto-mono-intro.woff2') format('woff2');font-display:swap}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:#fff;color:var(--md-foreground,#1f2329);font-family:var(--md-font-sans);font-size:15px;line-height:24px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+p,h1,h2,h3,figure,dl,dd{margin:0}
+img{display:block;max-width:100%}
+.back-link,.designer{display:flex;align-items:center;gap:12px}
+.back-link svg{flex:none}
+.designer-role{color:var(--md-muted-foreground);padding-left:12px;border-left:.5px solid var(--md-border,#e4e4e7)}
+.swimlane-case{width:calc(100% - 64px);max-width:1080px;margin:68px auto 80px;display:flex;flex-direction:column;gap:81px}
+.case-intro{display:flex;flex-direction:column;gap:32px}
+.intro-title{display:flex;flex-direction:column;gap:20px;max-width:700px}
+.case-kicker{font-family:SwimlaneMono,'Roboto Mono',monospace;font-size:16px;line-height:24px;letter-spacing:.96px;color:var(--md-muted-foreground)}
+.intro-title h1{font-size:48px;line-height:1.4;font-weight:500;overflow-wrap:anywhere}
+.swimlane-hero{overflow:hidden;border-radius:20px;aspect-ratio:1080/607.5}
+.swimlane-hero img{width:100%;height:100%;object-fit:cover}
+.swimlane-facts{display:grid;grid-template-columns:max-content max-content max-content minmax(0,1fr);column-gap:64px;row-gap:24px;padding:20px 0;border-block:.5px solid var(--md-border,#e4e4e7)}
+.swimlane-facts dt{font-size:12px;line-height:16px;color:var(--md-muted-foreground);margin-bottom:6px}
+.swimlane-facts dd{font-size:15px;line-height:24px;overflow-wrap:anywhere}
+.swimlane-section{display:flex;flex-direction:column;gap:24px;scroll-margin-top:76px;min-width:0}
+.swimlane-section h2{font-size:20px;line-height:28px;font-weight:400;color:#000}
+.background-group{display:flex;flex-direction:column;gap:12px}
+.problem-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.problem-cards article{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:24px;padding:24px;background:var(--md-subtle,#f8f9fa);border-radius:20px;text-align:center;min-width:0}
+.problem-cards h3{font-size:15px;line-height:24px;font-weight:700;display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
+.problem-cards em{font-style:normal;color:#3958ff}
+.problem-cards p{color:var(--md-muted-foreground)}
+.guidance-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.guidance-example{height:350px;overflow:hidden;border-radius:13px;background:linear-gradient(180deg,rgba(81,86,255,.06),rgba(81,86,255,0));display:flex;flex-direction:column;align-items:center;padding:25px 24px 0;gap:23px}
+.guidance-example figcaption{display:flex;flex-direction:column;align-items:center;gap:13px;flex:none;width:100%;text-align:center}
+.guidance-example h3{display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;line-height:24px;font-weight:700;color:#3958ff}
+.guidance-example p{color:var(--md-muted-foreground)}
+.guidance-preview{width:312px;max-width:100%;flex:none}
+.guidance-example:first-child .guidance-preview{width:340px}
+.guidance-preview img{width:100%;height:auto}
+.swimlane-board{position:relative;aspect-ratio:1080/600;background:var(--md-subtle,#f8f9fa);border-radius:16px;overflow:hidden}
+.board-image{position:absolute;display:block;border:0;padding:0;background:none;cursor:zoom-in;overflow:hidden}
+.board-image img{width:100%;height:auto;max-width:none}
+.board-image--solution{width:77.96296%;left:11.01852%;top:6.72%}
+.board-image--value{width:74.07407%;height:91.66667%;left:12.96296%;top:4.21333%}
+.board-image--value img{opacity:.8}
+.board-image--satisfaction{width:74.07407%;left:12.96296%;top:5.04733%}
+.board-image:focus-visible{outline:2px solid var(--md-primary,#4e22ff);outline-offset:4px}
+.appendix-reference{display:flex;align-items:center;gap:6px;color:var(--md-subtle-foreground)}
+.appendix-reference span{display:inline-flex;align-items:center;gap:4px}
+.project-pagination{margin:0}
+@media(max-width:1000px){.swimlane-facts{column-gap:32px}.problem-cards article{padding:24px 20px}}
+@media(max-width:760px){.designer-role{display:none}.swimlane-facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.swimlane-facts>div:last-child{grid-column:1/-1}.problem-cards{grid-template-columns:1fr}.problem-cards article{padding:24px;gap:16px}.guidance-comparison{grid-template-columns:1fr}.swimlane-case{margin-top:48px}.guidance-example{height:350px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
