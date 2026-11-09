@@ -1,0 +1,7 @@
+/* Figma 362:116426 — detail hero only; homepage cover is independent. */
+.research-hero{position:relative;container-type:inline-size;isolation:isolate;aspect-ratio:1080/525;margin-top:40px;border-radius:20px;overflow:hidden;background:#fff}
+.research-hero__fields{position:absolute;inset:-11.62% 0 -4.55% -62.96%;z-index:-2;background:linear-gradient(90deg,rgba(240,249,250,.98),rgba(240,249,250,.72) 43%,rgba(240,249,250,0) 76%),radial-gradient(ellipse 47.62% 41.67% at 100% 26.67%,rgba(225,245,249,.95),rgba(225,245,249,0)),radial-gradient(ellipse 58.82% 80.65% at 100% 72.58%,rgba(163,223,237,.85),rgba(163,223,237,0)),radial-gradient(ellipse 76.92% 76.92% at 73.85% 76.92%,rgba(158,219,235,.96),rgba(158,219,235,0))}
+.research-hero__grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.6;background:url('hero/grain.svg') repeat-x;background-size:64.39% 116%;background-position:-.5324cqw 0}
+.research-hero__frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88.8889%;padding:1.6461cqw;border:.41148cqw solid #000;border-radius:.98796cqw;background:#fff;display:block;overflow:hidden;line-height:0}
+.research-hero__frame img{display:block;width:100%;height:auto;aspect-ratio:4096/1613;object-fit:contain}
+.research-hero__frame:focus-visible{outline:2px solid var(--portfolio-accent,#4e22ff);outline-offset:4px}
