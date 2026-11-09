@@ -18,3 +18,36 @@ body[data-foundation-page="byteio"] .case-hero h1{font-size:48px;line-height:64p
 @media(max-width:640px){.case-main{width:calc(100% - 64px);margin-top:40px}.case-intro,.case-section{margin-bottom:64px}.case-hero{margin-bottom:24px}.hero-description{font-size:18px;line-height:28px}.project-facts{gap:24px 20px;margin-top:24px}.background-grid{grid-template-columns:1fr;gap:24px}.context-stat{border-left:0;border-top:.5px solid var(--line);padding:20px 0 0}.context-stat strong{font-size:48px;line-height:64px}.task-flow{grid-template-columns:1fr;margin-top:24px;gap:16px}.task-flow li{min-height:44px;padding:8px}.task-flow li:not(:last-child)::after{content:'↓';right:auto;left:50%;bottom:-19px;transform:translateX(-50%);line-height:16px}.mapping-labels{display:none}.problem-row{grid-template-columns:1fr;gap:16px}.problem-row h4{position:static;width:auto;height:auto;clip-path:none;overflow:visible;white-space:normal;font-size:12px;line-height:20px;color:var(--md-muted-foreground);margin-bottom:8px}.problem-row>div{min-width:0}.section-heading{margin-bottom:24px}.solution-links{gap:16px 24px;margin-bottom:32px}.solution-chapter+.solution-chapter{margin-top:48px;padding-top:32px}.chapter-heading{gap:12px;margin-bottom:24px}.solution-detail+.solution-detail{margin-top:40px}.solution-points{grid-template-columns:1fr;gap:24px}.validation-note{flex-direction:column;gap:8px;padding:24px}.figure-open{border-radius:12px}.zoom-hint{right:8px;bottom:8px}.reflection{margin-bottom:64px}}
 @media(max-width:700px){.designer-role,.designer i{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.zoom-hint{transition:none}}
+
+/* Figma Rs8Hqlzc57oVviZMKnY4Pm: 5006:15007 and 5006:15019.
+ * Artwork positions use the original 1080px artboard as their coordinate space. */
+body[data-foundation-page="byteio"] .byteio-design-section>h2{font-size:20px;line-height:28px;font-weight:400;color:#000;margin:0 0 24px}
+.byteio-problem-description{font-size:15px;line-height:24px;color:var(--ink);margin-bottom:24px}
+.byteio-artwork{margin:0;min-width:0}
+.byteio-artboard.figure-open{aspect-ratio:1080/560;border:0;border-radius:20px;background:var(--md-subtle,#f8f9fa);isolation:isolate}
+.byteio-artboard__slot{position:absolute;display:block;left:5.555556%;top:14.867768%;width:88.888889%;aspect-ratio:960/391.641}
+.byteio-artboard__slot>img{position:absolute;display:block;inset:0;width:100%;height:100%;max-width:none;object-fit:fill}
+.byteio-artboard--problems{aspect-ratio:1080/500!important}
+.byteio-artboard--problems .byteio-artboard__slot{top:12.3%;aspect-ratio:960/378}
+.byteio-artboard--workspace .byteio-artboard__slot{top:12.053571%;width:89.074074%;aspect-ratio:962/422;overflow:hidden}
+.byteio-artboard--workspace .byteio-artboard__slot>img{inset:auto;left:0;top:2.29%;width:99.79%;height:95.69%}
+.byteio-artboard--properties .byteio-artboard__slot{top:13.661161%;aspect-ratio:960/406.875}
+.byteio-artboard--management .byteio-artboard__slot{top:11.339286%;aspect-ratio:960/424;overflow:hidden}
+.byteio-artboard--management .byteio-artboard__slot>img{inset:auto;left:0;top:1.89%;width:100%;height:98.17%}
+.byteio-artboard--review .byteio-artboard__slot{top:14.732232%;aspect-ratio:960/394.219}
+.byteio-solutions{display:flex;flex-direction:column;gap:40px}
+.byteio-solution{display:flex;flex-direction:column;gap:16px;min-width:0;scroll-margin-top:calc(var(--nav-height,52px) + 24px)}
+.byteio-solution-heading{position:relative;padding-top:46px;min-height:78px;isolation:isolate}
+.byteio-solution-number{position:absolute;top:17.576px;left:.744px;height:44px;width:auto;max-width:none;z-index:-1;pointer-events:none}
+.byteio-solution-heading__row{display:flex;align-items:center;gap:12px;min-width:0}
+body[data-foundation-page="byteio"] .byteio-solution-heading h3{display:flex;align-items:baseline;gap:12px;flex:1;min-width:0;font-size:24px;line-height:32px;font-weight:500;color:var(--ink)}
+.byteio-solution-heading h3>span:first-child{flex:none}
+.byteio-solution-subtitle{flex:1;min-width:0;color:var(--accent)}
+.byteio-solution-steps{display:flex;align-items:center;gap:6px;padding-top:20px;flex:none}
+.byteio-solution-step{display:flex;align-items:center;width:48px;height:22px;margin-block:-10px}
+.byteio-solution-step>span{height:2px;width:100%;border-radius:9999px;background:#e5e5e5}
+.byteio-solution-step.is-current>span{background:var(--accent)}
+.byteio-solution-step:hover>span{background:var(--accent)}
+@media(max-width:1000px){.byteio-solution-heading__row{flex-wrap:wrap}.byteio-solution-heading h3{flex-basis:100%;flex-wrap:wrap;gap:0 12px}.byteio-solution-subtitle{flex-basis:260px}.byteio-solution-steps{margin-left:auto;padding-top:0}}
+@media(max-width:800px){body[data-foundation-page="byteio"] .byteio-solution-heading h3{flex-basis:100%}}
+@media(max-width:640px){.byteio-solution-heading h3>span:first-child{flex-basis:100%}.byteio-solution-subtitle{flex-basis:100%}.byteio-artboard.figure-open{border-radius:20px}}
