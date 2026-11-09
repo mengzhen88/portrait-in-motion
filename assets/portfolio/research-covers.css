@@ -1,4 +1,11 @@
 /* Figma report covers, composed from original layers on the existing card canvas. */
+.pontus-framework-cover{background:#f3f3fa;overflow:hidden}
+.pontus-cover-fields{position:absolute;inset:0 0 0 -6.3%;background:linear-gradient(90deg,rgba(243,243,250,.98),rgba(243,243,250,.72) 43%,transparent 76%),radial-gradient(ellipse 47.62% 41.67% at 100% 26.67%,rgba(232,233,252,.95),transparent),radial-gradient(ellipse 58.82% 80.64% at 100% 72.58%,rgba(186,200,240,.85),transparent),radial-gradient(ellipse 76.92% 76.92% at 73.84% 76.92%,rgba(168,188,235,.96),transparent)}
+.pontus-cover-grain{transform:scale(.998605);transform-origin:top left}
+.pontus-cover-grain img{width:455.881px;height:399.215px}
+.pontus-cover-screens{position:absolute;left:45.23px;top:31.75px;width:664.078px;height:365.8px;mask:url('pontus-framework/cover/cover-mask.svg') 0 0/100% 100% no-repeat;-webkit-mask:url('pontus-framework/cover/cover-mask.svg') 0 0/100% 100% no-repeat}
+.pontus-cover-dashboard{position:absolute;left:22.95px;top:16.39px;width:510.426px;height:402.983px;max-width:none}
+.pontus-cover-flow{position:absolute;left:259.56px;top:65.62px;width:335.063px;height:356.558px;object-fit:cover;max-width:none;box-shadow:0 4px 8px -8px #0000000f,0 6px 12px #0000000a,0 8px 24px 8px #0000000a}
 @font-face{font-family:Research Douyin;src:url('research-covers/douyin-cover.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:Research Report;src:url('research-covers/report-black.woff2?v=20261108-byteio') format('woff2');font-weight:900;font-display:swap}
 .research-cover .research-canvas{width:708px;height:398px;transform:scale(calc(var(--art-scale,1)*704/708));font-family:var(--sans);isolation:isolate}
