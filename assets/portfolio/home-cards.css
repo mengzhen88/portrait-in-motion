@@ -14,3 +14,7 @@
 /* Anyclaw scales only its screen, preserving its existing perspective animation. */
 .project-card--anyclaw .cover-motion{transform:none!important}
 @media(prefers-reduced-motion:reduce){.cover-motion{transition:none}}
+
+/* The swimlane artwork is already a complete cover. */
+.portfolio-cover.swimlane-cover{padding:0}
+.portfolio-cover.swimlane-cover>.cover-motion>img{object-fit:cover;border-radius:0}
