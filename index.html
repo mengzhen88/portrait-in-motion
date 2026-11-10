@@ -72,6 +72,26 @@ body{background:#fff}
 @media(max-width:600px){.home-sticky-role{display:none}.home-sticky-inner{gap:12px}.home-sticky-nav .site-nav{gap:16px}.home-sticky-nav .nav-link,.home-sticky-nav .contact-button{font-size:14px}.home-sticky-nav .contact-button{padding-inline:12px}}
 
 .cv-work{--cv-logo-size:32px}.cv-work .company-logo{position:relative;border-radius:5.5px}.cv-work .company-logo__art{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:62px;height:62px;transform:translate(-50%,-50%) scale(.5161290323);transform-origin:center}
+
+/* Mobile homepage framework from Figma 367:118453. */
+@media(max-width:760px){
+ .wrap{width:calc(100% - 48px)}
+ .site-header{padding-top:24px;gap:24px}
+ .site-header>.site-nav{width:100%;justify-content:flex-start;flex-wrap:nowrap;gap:28px;padding:0;border-bottom:.5px solid var(--md-border)}
+ .site-header>.site-nav .nav-link,.site-header>.site-nav .contact-button{position:relative;display:inline-flex;padding:12px 0;border:0;border-radius:0;background:transparent;color:var(--md-subtle-foreground);font:400 16px/24px var(--sans);opacity:1}
+ .site-header>.site-nav .nav-link[aria-current="page"]{color:var(--md-foreground);font-weight:500}
+ .site-header>.site-nav .nav-link[aria-current="page"]::after{display:block;content:"";position:absolute;left:0;right:0;top:auto;bottom:0;width:auto;height:2px;transform:none;background:var(--md-foreground)}
+ .page-content{padding-top:24px}
+ .project-filters{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;gap:12px;margin-bottom:32px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .project-filters::-webkit-scrollbar{display:none}
+ .project-filters .filter{flex:none}
+ .project-grid{gap:32px}
+ .project-art{border-radius:24px}
+ .project-card>a{gap:20px}
+ .project-copy{gap:12px}
+ .project-copy h2{font-size:20px;line-height:28px}
+ .project-copy p{font-size:16px;line-height:24px}
+}
 </style><link rel="stylesheet" href="assets/design-system/tokens.css?v=20261106-violet"><link rel="stylesheet" href="assets/design-system/foundation.css?v=20261104"><link rel="stylesheet" href="assets/design-system/card-borders.css?v=20261104-half-pixel"><link rel="stylesheet" href="assets/portfolio/home-cards.css?v=20261108-hover-zoom"><link rel="stylesheet" href="assets/portfolio/research-covers.css?v=20261109-pontus-cover"><link rel="stylesheet" href="assets/byteio/hero.css?v=20261109-white-frames"></head><body data-foundation-page="home">
 <header class="wrap site-header"><div class="profile-summary"><div class="profile-identity"><div class="portrait portrait-small"><div class="header-portrait-crop"><img class="header-portrait-photo" src="assets/home/header-portrait.png" alt="邵梦贞的肖像" decoding="async"></div><img class="header-crown" src="assets/home/header-crown.png" alt="" aria-hidden="true"></div><div><h1 class="profile-name" aria-label="邵梦贞"><span class="header-signature"><img src="assets/home/header-signature.png" alt="" fetchpriority="high" decoding="async"></span></h1><p class="profile-role">产品体验设计师</p></div></div><p class="profile-description">7 年设计经验，含1年 AI 产品、6年复杂B端产品设计经验，涵盖AI 智能体产品、企业级数据平台与低代码工具</p></div><nav class="site-nav" aria-label="主导航"><a class="nav-link" href="#projects" data-view="projects" aria-controls="projects-panel" aria-current="page">项目集合</a><a class="nav-link" href="#resume" data-view="resume" aria-controls="resume-panel">个人简历</a><a class="contact-button md-button md-button--primary" href="#contact">联系我</a></nav></header>
 <script>
