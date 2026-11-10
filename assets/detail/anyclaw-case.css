@@ -22,3 +22,19 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 .discover-converge img,.testing-metrics strong img{transform:scaleY(-1)}.quote-row:nth-child(3) .feedback-pill{min-width:320px}.gallery-composite{flex:none;width:318px;height:199px;position:relative;border:.5px solid var(--case-border);border-radius:12px;overflow:hidden}.gallery-composite img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gallery-composite img+img{clip-path:inset(0 0 0 50%)}
+
+/* On phones, show each chapter as a continuous reading experience. */
+.mobile-slide-label{display:none}
+@media(max-width:759px){
+ .creation-tabs,.creation-comparison .stack-sheet,.ppt-chapter .chapter-dots,.ppt-chapter .chapter-subtitle{display:none}
+ .creation-layout{display:block;padding:0}
+ .creation-comparison{max-width:none;padding:0;min-height:0!important}
+ .creation-panels,.ppt-deck{display:flex;flex-direction:column;gap:32px}
+ .creation-pair{grid-template-columns:1fr}
+ .creation-pair .mobile-slide-label{grid-column:1/-1;padding:20px 24px 0}
+ .mobile-slide-label{display:block;font-size:16px;line-height:24px;font-weight:500;color:var(--case-copy)}
+ .ppt-slide{position:static!important;transform:none!important;gap:24px}
+ .ppt-deck{height:auto!important;overflow:visible!important}
+ .ppt-chapter .chapter-header,.creation-sticky>.chapter-header{margin-bottom:24px}
+ .creation-card+article{border-left:0;border-top:.5px solid var(--case-warm-border)}
+}

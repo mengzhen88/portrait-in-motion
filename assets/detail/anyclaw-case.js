@@ -86,8 +86,8 @@
   document.documentElement.style.setProperty('--nav-height',nav.getBoundingClientRect().height+'px');scaleArtwork();clearTurns();
   // Keep the card stack's footprint stable when the selected card changes.
   let pairHeight=0;panels.forEach(panel=>{panel.hidden=false;pairHeight=Math.max(pairHeight,panel.offsetHeight);});
-  panels.forEach((panel,i)=>panel.hidden=i!==creationIndex);
-  comparison.style.minHeight=(pairHeight+parseFloat(getComputedStyle(comparison).paddingTop))+'px';
+  panels.forEach((panel,i)=>panel.hidden=innerWidth>=760&&i!==creationIndex);
+  comparison.style.minHeight=innerWidth<760?'':(pairHeight+parseFloat(getComputedStyle(comparison).paddingTop))+'px';
   creationPinned=innerWidth>=1000&&innerHeight>=650;creation.classList.toggle('is-pinned',creationPinned);creationStep=Math.max(400,innerHeight*.8);track.style.height=creationPinned?(sticky.offsetHeight+creationStep*3)+'px':'';
   chapters.forEach(chapter=>{
    chapter.pinned=innerWidth>=760&&innerHeight>=600;chapter.section.classList.toggle('is-pinned',chapter.pinned);
@@ -104,7 +104,7 @@
    }else{
     chapter.header.querySelector('.chapter-title').style.minHeight='';chapter.deck.style.height='';chapter.track.style.height='';
    }
-   chapter.slides.forEach((slide,i)=>slide.hidden=i!==chapter.index);
+   chapter.slides.forEach((slide,i)=>slide.hidden=innerWidth>=760&&i!==chapter.index);
   });
   restoreReadingPosition(readingPosition);layoutPending=false;layoutFromResize=false;syncScroll();
  }
@@ -121,8 +121,8 @@
  document.querySelectorAll('img').forEach(image=>image.addEventListener('load',()=>scheduleLayout(50),{once:true}));
  function alignFragment(){
   const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(!target)return;
-  const panel=target.closest('.creation-pair');if(panel)selectCreation(panels.indexOf(panel),false,false);
-  const chapter=chapters.find(chapter=>chapter.section.contains(target));if(chapter){const slide=target.closest('.ppt-slide');if(slide)selectChapter(chapter,chapter.slides.indexOf(slide));}
+  const panel=target.closest('.creation-pair');if(panel&&innerWidth>=760)selectCreation(panels.indexOf(panel),false,false);
+  const chapter=chapters.find(chapter=>chapter.section.contains(target));if(chapter&&innerWidth>=760){const slide=target.closest('.ppt-slide');if(slide)selectChapter(chapter,chapter.slides.indexOf(slide));}
   const chapterTarget=chapter&&target===chapter.section?chapter.track:target;
   const top=scrollY+chapterTarget.getBoundingClientRect().top-nav.offsetHeight-32;scrollTo({top,behavior:'instant'});
  }
