@@ -6,3 +6,5 @@
 .emr-design-figure button{display:block;position:relative;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:#f5f6f8;cursor:zoom-in}
 .emr-design-figure img{position:absolute;display:block;max-width:none;object-fit:fill}
 @media(max-width:760px){.emr-design-block{margin-top:64px}}
+
+.emr-background-copy{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;color:#1f2329;font-size:15px;line-height:24px}
