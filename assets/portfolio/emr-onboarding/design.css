@@ -1,0 +1,8 @@
+.emr-design-block{margin-top:81px}
+.emr-design-block>h2{font-size:20px;line-height:28px;font-weight:400;color:#000;margin-bottom:24px}
+.emr-design-block>p{font-size:15px;line-height:24px;color:#1f2329;margin:0 0 24px}
+.emr-design-gallery{display:flex;flex-direction:column;gap:24px}
+.emr-design-figure{width:100%;margin:0}
+.emr-design-figure button{display:block;position:relative;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:#f5f6f8;cursor:zoom-in}
+.emr-design-figure img{position:absolute;display:block;max-width:none;object-fit:fill}
+@media(max-width:760px){.emr-design-block{margin-top:64px}}
