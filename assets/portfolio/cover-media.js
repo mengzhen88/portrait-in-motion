@@ -50,13 +50,13 @@
     const link = cover.closest('a');
     const gif = slot.querySelector('.emr-media-gif,.cover-gif-animation');
     const rounding = roundProfilePanel(slot, gif);
-    const source = gif.getAttribute('src');
+    const source = gif.dataset.src || gif.getAttribute('src');
     let pendingBlob;
     let preparedBlob;
     let objectUrl;
     let inside = false;
     let sequence = 0;
-    gif.addEventListener('load', () => { if (inside) rounding?.start(); });
+    gif.addEventListener('load', () => { if (inside) { slot.classList.add('is-playing'); rounding?.start(); } });
     const prepare = () => pendingBlob ||= fetch(source, { cache: 'force-cache' })
       .then(response => { if (!response.ok) throw new Error('GIF unavailable'); return response.blob(); })
       .then(blob => (preparedBlob = blob));
@@ -72,15 +72,26 @@
         if (previous) URL.revokeObjectURL(previous);
       };
       if (preparedBlob) show(preparedBlob);
-      else prepare().then(show).catch(() => { pendingBlob = null; }); // Keep the normal GIF as fallback.
+      else prepare().then(show).catch(() => {
+        pendingBlob = null;
+        if (inside && request === sequence) gif.src = source; // Also works when opened as a local file.
+      });
     };
-    const leave = () => { inside = false; ++sequence; rounding?.stop(); };
-    cover.addEventListener('mouseenter', restart);
-    cover.addEventListener('mouseleave', leave);
+    const leave = () => { inside = false; ++sequence; slot.classList.remove('is-playing'); rounding?.stop(); };
+    cover.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') restart(); });
+    cover.addEventListener('pointerleave', leave);
     link.addEventListener('focus', () => { if (link.matches(':focus-visible')) restart(); });
     link.addEventListener('blur', leave);
     const preload = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { prepare().catch(() => { pendingBlob = null; }); preload.disconnect(); }
+      if (entries[0].isIntersecting) {
+        if (matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches && !navigator.connection?.saveData) {
+          const warm = () => { if (!document.hidden) prepare().catch(() => { pendingBlob = null; }); };
+          const whenIdle = () => 'requestIdleCallback' in window ? requestIdleCallback(warm, { timeout: 3000 }) : setTimeout(warm, 500);
+          if (document.readyState === 'complete') whenIdle();
+          else window.addEventListener('load', whenIdle, { once: true });
+        }
+        preload.disconnect();
+      }
     }, { rootMargin: '300px' });
     preload.observe(cover);
   });
